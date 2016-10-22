@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -47,6 +52,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -56,6 +64,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -63,6 +75,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -88,23 +104,91 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\ddsmoothmenu.css" />
+    <Content Include="Content\images\1311260370_paypal-straight.png" />
+    <Content Include="Content\images\carousel_next_bg.png" />
+    <Content Include="Content\images\carousel_previous_bg.png" />
+    <Content Include="Content\images\closelabel.gif" />
+    <Content Include="Content\images\facebook.png" />
+    <Content Include="Content\images\google.png" />
+    <Content Include="Content\images\image_frame.png" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\newsletter.png" />
+    <Content Include="Content\images\nextlabel.gif" />
+    <Content Include="Content\images\prevlabel.gif" />
+    <Content Include="Content\images\product\01.jpg" />
+    <Content Include="Content\images\product\01_xs.jpg" />
+    <Content Include="Content\images\product\02.jpg" />
+    <Content Include="Content\images\product\02_xs.jpg" />
+    <Content Include="Content\images\product\03.jpg" />
+    <Content Include="Content\images\product\03_xs.jpg" />
+    <Content Include="Content\images\product\04.jpg" />
+    <Content Include="Content\images\product\04_xs.jpg" />
+    <Content Include="Content\images\product\05.jpg" />
+    <Content Include="Content\images\product\05_xs.jpg" />
+    <Content Include="Content\images\product\06.jpg" />
+    <Content Include="Content\images\product\07.jpg" />
+    <Content Include="Content\images\product\07_l.jpg" />
+    <Content Include="Content\images\product\07_preview.jpg" />
+    <Content Include="Content\images\product\07_s.jpg" />
+    <Content Include="Content\images\product\08.jpg" />
+    <Content Include="Content\images\product\asus1.jpg" />
+    <Content Include="Content\images\product\lenovo1.jpg" />
+    <Content Include="Content\images\remove.png" />
+    <Content Include="Content\images\skype.png" />
+    <Content Include="Content\images\slider\01.jpg" />
+    <Content Include="Content\images\slider\02.jpg" />
+    <Content Include="Content\images\slider\03.jpg" />
+    <Content Include="Content\images\tooplate_body.jpg" />
+    <Content Include="Content\images\tooplate_bottom.png" />
+    <Content Include="Content\images\tooplate_bullet.png" />
+    <Content Include="Content\images\tooplate_footer.png" />
+    <Content Include="Content\images\tooplate_header.png" />
+    <Content Include="Content\images\tooplate_hr.png" />
+    <Content Include="Content\images\tooplate_logo.png" />
+    <Content Include="Content\images\tooplate_main_b.png" />
+    <Content Include="Content\images\tooplate_main_m.png" />
+    <Content Include="Content\images\tooplate_main_t.png" />
+    <Content Include="Content\images\tooplate_menu_divider.png" />
+    <Content Include="Content\images\tooplate_search.png" />
+    <Content Include="Content\images\tooplate_sidebar_divider.png" />
+    <Content Include="Content\images\tooplate_slider_content.png" />
+    <Content Include="Content\images\tooplate_slider_frame.png" />
+    <Content Include="Content\images\twitter2.png" />
+    <Content Include="Content\jquery.dualSlider.0.2.css" />
+    <Content Include="Content\slimbox2.css" />
+    <Content Include="Content\tooplate_style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Prototype\about.html" />
+    <Content Include="Prototype\checkout.html" />
+    <Content Include="Prototype\contact.html" />
+    <Content Include="Prototype\faqs.html" />
+    <Content Include="Prototype\index.html" />
+    <Content Include="Prototype\productdetail.html" />
+    <Content Include="Prototype\products.html" />
+    <Content Include="Prototype\shoppingcart.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\ddsmoothmenu.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.3.2.min.js" />
+    <Content Include="Scripts\jquery.dualSlider.0.3.js" />
+    <Content Include="Scripts\jquery.dualSlider.0.3.min.js" />
+    <Content Include="Scripts\jquery.easing.1.3.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.timers-1.2.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\slimbox2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\ShopContext.cs" />
@@ -125,10 +209,10 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

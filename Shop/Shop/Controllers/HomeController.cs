@@ -15,9 +15,9 @@ namespace Shop.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var listaKategorii = db.Category.ToList();
-           
-            return View();
+            var products = db.Product.Where(p => p.ProductId > 0).ToList();
+
+            return View(products);
         }
     }
 }

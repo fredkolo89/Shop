@@ -42,3 +42,10 @@ D:\repozutoriumŁukasza\Shop\Shop\bin\System.Web.Mvc.xml
 D:\repozutoriumŁukasza\Shop\Shop\obj\Debug\Shop.csprojResolveAssemblyReference.cache
 D:\repozutoriumŁukasza\Shop\Shop\obj\Debug\Shop.dll
 D:\repozutoriumŁukasza\Shop\Shop\obj\Debug\Shop.pdb
+D:\repozutoriumŁukasza\Shop\Shop\bin\Antlr3.Runtime.dll
+D:\repozutoriumŁukasza\Shop\Shop\bin\Newtonsoft.Json.dll
+D:\repozutoriumŁukasza\Shop\Shop\bin\System.Web.Optimization.dll
+D:\repozutoriumŁukasza\Shop\Shop\bin\WebGrease.dll
+D:\repozutoriumŁukasza\Shop\Shop\bin\Antlr3.Runtime.pdb
+D:\repozutoriumŁukasza\Shop\Shop\bin\Newtonsoft.Json.xml
+D:\repozutoriumŁukasza\Shop\Shop\bin\System.Web.Optimization.xml
