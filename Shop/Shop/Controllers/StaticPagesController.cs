@@ -9,9 +9,9 @@ namespace Shop.Controllers
     public class StaticPagesController : Controller
     {
         // GET: StaticPages
-        public ActionResult Contact()
+        public ActionResult GetStaticPage(string name)
         {
-            return View("Contact");
+            return View(name);
         }
     }
 }

@@ -16,8 +16,8 @@ namespace Shop
 
             routes.MapRoute(
          name: "Contact",
-         url: "{action}",
-         defaults: new { controller = "StaticPages", action = "Contact" }
+         url: "static/{name}",
+         defaults: new { controller = "StaticPages", action = "GetStaticPage" }
          );
 
             routes.MapRoute(
