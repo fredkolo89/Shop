@@ -79,18 +79,11 @@
                     <ul>
                         <li><a href="index.html" class="selected">Home</a></li>
                         <li>
-                            <a href="products.html">Products</a>
-                            <ul>
-                                <li><a href="#">Category One</a></li>
-                                <li><a href="#">Category Two</a></li>
-                                <li><a href="#">Category Three</a></li>
-                                <li><a href="#">Category Four</a></li>
-                                <li><a href="#">Category Five</a></li>
-                            </ul>
+                           @Html.Action("GetCategoryList","Home")
                         </li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="faqs.html">FAQs</a></li>
-                        <li><a href="contact.html" class="last">Contact</a></li>
+                        <li>@Html.ActionLink("Contact","Contact","StaticPages")</li>
                     </ul>
                     <br style="clear: left" />
                 </div> <!-- end of tooplate_menu -->
@@ -112,67 +105,10 @@
             </div> <!-- END of header bottom -->
         </div> <!-- END of header -->
 
-        <div id="tooplate_slider" class="section_content">
-            <span class="frame"></span>
-            <div id="carousel">
-                <div class="panel">
+       
 
-                    <div class="details_wrapper">
-
-                        <div class="details">
-
-                            <div class="detail">
-                                <h2>Dolor sit amet</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec orci erat. </p>
-                                <a href="productdetail.html" title="Read more" class="slider_more">Read more</a>
-                            </div><!-- /detail -->
-
-                            <div class="detail">
-                                <h2>Lorem ipsum dolor</h2>
-                                <p> Donec nec orci vel risus condimentum suscipit dapibus quis justo.</p>
-                                <a href="productdetail.html" title="Read more" class="slider_more">Read more</a>
-                            </div><!-- /detail -->
-
-                            <div class="detail">
-                                <h2>Aenean massa cum sociis</h2>
-                                <p> Nam non lectus a nunc fringilla aliquet ac id lectus. </p>
-                                <a href="productdetail.html" title="Read more" class="slider_more">Read more</a>
-                            </div><!-- /detail -->
-
-                        </div><!-- /details -->
-
-                    </div><!-- /details_wrapper -->
-
-                </div><!-- /panel -->
-
-                <a href="javascript:void(0);" class="previous" title="Previous">Previous</a>
-                <a href="javascript:void(0);" class="next" title="Next">Next</a>
-
-                <div id="slider-image-frame">
-                    <div class="backgrounds">
-
-                        <div class="item item_1">
-                            <img src="images/slider/01.jpg" alt="image" />
-                        </div><!-- /item -->
-
-                        <div class="item item_2">
-                            <img src="images/slider/02.jpg" alt="image" />
-                        </div><!-- /item -->
-
-                        <div class="item item_3">
-                            <img src="images/slider/03.jpg" alt="image" />
-                        </div><!-- /item -->
-
-                    </div><!-- /backgrounds -->
-                </div>
-            </div>
-            <div class="clear"></div>
-        </div> <!-- END of slider -->
-
-        <div id="tooplate_main">
-            @RenderBody()
-        </div> <!-- END of main -->
-
+             @RenderBody()
+ 
     </div> <!-- END of wrapper -->
 
     <div id="tooplate_bottom_wrapper">

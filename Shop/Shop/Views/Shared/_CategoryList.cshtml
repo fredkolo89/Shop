@@ -1,0 +1,10 @@
+﻿@model Shop.ViewModels.ListOfCategory
+
+<a href="products.html">Products</a>
+<ul>
+    @foreach (var i in Model.categories)
+    {
+       <li><a href="#">@i.Name</a></li>
+    }
+    
+</ul>

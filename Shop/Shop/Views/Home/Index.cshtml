@@ -1,78 +1,143 @@
-﻿@model List<Shop.Models.Product>
-
+﻿ 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div id="tooplate_slider" class="section_content">
+    <span class="frame"></span>
+    <div id="carousel">
+        <div class="panel">
 
-<div>
-    <h4>Product</h4>
-    @foreach (var i in Model)
-    {
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => i.Category.Name)
-            </dt>
+            <div class="details_wrapper">
 
-            <dd>
-                @Html.DisplayFor(model => i.Category.Name)
-            </dd>
+                <div class="details">
 
-            <dt>
-                @Html.DisplayNameFor(model => i.Name)
-            </dt>
+                    <div class="detail">
+                        <h2>Dolor sit amet</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec orci erat. </p>
+                        <a href="productdetail.html" title="Read more" class="slider_more">Read more</a>
+                    </div><!-- /detail -->
 
-            <dd>
-                @Html.DisplayFor(model => i.Name)
-            </dd>
+                    <div class="detail">
+                        <h2>Lorem ipsum dolor</h2>
+                        <p> Donec nec orci vel risus condimentum suscipit dapibus quis justo.</p>
+                        <a href="productdetail.html" title="Read more" class="slider_more">Read more</a>
+                    </div><!-- /detail -->
 
-            <dt>
-                @Html.DisplayNameFor(model => i.Brand)
-            </dt>
+                    <div class="detail">
+                        <h2>Aenean massa cum sociis</h2>
+                        <p> Nam non lectus a nunc fringilla aliquet ac id lectus. </p>
+                        <a href="productdetail.html" title="Read more" class="slider_more">Read more</a>
+                    </div><!-- /detail -->
 
-            <dd>
-                @Html.DisplayFor(model => i.Brand)
-            </dd>
+                </div><!-- /details -->
 
-            <dt>
-                @Html.DisplayNameFor(model => i.Price)
-            </dt>
+            </div><!-- /details_wrapper -->
 
-            <dd>
-                @Html.DisplayFor(model => i.Price)
-            </dd>
+        </div><!-- /panel -->
 
-            <dt>
-                @Html.DisplayNameFor(model => i.Avaliability)
-            </dt>
+        <a href="javascript:void(0);" class="previous" title="Previous">Previous</a>
+        <a href="javascript:void(0);" class="next" title="Next">Next</a>
 
-            <dd>
-                @Html.DisplayFor(model => i.Avaliability)
-            </dd>
+        <div id="slider-image-frame">
+            <div class="backgrounds">
 
-            <dt>
-                @Html.DisplayNameFor(model => i.Description)
-            </dt>
+                <div class="item item_1">
+                    <img src="images/slider/01.jpg" alt="image" />
+                </div><!-- /item -->
 
-            <dd>
-                @Html.DisplayFor(model => i.Description)
-            </dd>
+                <div class="item item_2">
+                    <img src="images/slider/02.jpg" alt="image" />
+                </div><!-- /item -->
 
-            <dt>
-                @Html.DisplayNameFor(model => i.ImagePath)
-            </dt>
+                <div class="item item_3">
+                    <img src="images/slider/03.jpg" alt="image" />
+                </div><!-- /item -->
 
-            <dd>
-                @Html.DisplayFor(model => i.ImagePath)
-            </dd>
+            </div><!-- /backgrounds -->
+        </div>
+    </div>
+    <div class="clear"></div>
+</div> <!-- END of slider -->
 
-        </dl>
-    }
-   
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div id="tooplate_main">
+    <span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
+    <div class="product">
+        <h1>New Products</h1>
+        <div class="product_box">
+            <div class="img_box">
+                <span></span>
+                <a href="productdetail.html"><img src="images/product/01.jpg" alt="image" /></a>
+            </div>
+            <h2><a href="productdetail.html">Product One</a></h2>
+            <p class="price">$30</p>
+        </div>
+        <div class="product_box">
+            <div class="img_box">
+                <span></span>
+                <a href="productdetail.html"><img src="images/product/02.jpg" alt="image" /></a>
+            </div>
+            <h2><a href="productdetail.html">Product One</a></h2>
+            <p class="price">$30</p>
+        </div>
+        <div class="product_box">
+            <div class="img_box">
+                <span></span>
+                <a href="productdetail.html"><img src="images/product/03.jpg" alt="image" /></a>
+            </div>
+            <h2><a href="productdetail.html">Product One</a></h2>
+            <p class="price">$30</p>
+        </div>
+        <div class="product_box">
+            <div class="img_box">
+                <span></span>
+                <a href="productdetail.html"><img src="images/product/04.jpg" alt="image" /></a>
+            </div>
+            <h2><a href="productdetail.html">Product One</a></h2>
+            <p class="price">$30</p>
+        </div>
+    </div>
+
+    <div class="clear h20"></div>
+    <hr />
+    <div class="clear h10"></div>
+
+    <div class="product">
+        <h1>Popular Products</h1>
+        <div class="product_box">
+            <div class="img_box">
+                <span></span>
+                <a href="productdetail.html"><img src="images/product/01.jpg" alt="image" /></a>
+            </div>
+            <h2><a href="productdetail.html">Product One</a></h2>
+            <p class="price">$30</p>
+        </div>
+        <div class="product_box">
+            <div class="img_box">
+                <span></span>
+                <a href="productdetail.html"><img src="images/product/02.jpg" alt="image" /></a>
+            </div>
+            <h2><a href="productdetail.html">Product One</a></h2>
+            <p class="price">$30</p>
+        </div>
+        <div class="product_box">
+            <div class="img_box">
+                <span></span>
+                <a href="productdetail.html"><img src="images/product/03.jpg" alt="image" /></a>
+            </div>
+            <h2><a href="productdetail.html">Product One</a></h2>
+            <p class="price">$30</p>
+        </div>
+        <div class="product_box">
+            <div class="img_box">
+                <span></span>
+                <a href="productdetail.html"><img src="images/product/04.jpg" alt="image" /></a>
+            </div>
+            <h2><a href="productdetail.html">Product One</a></h2>
+            <p class="price">$30</p>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div> <!-- END of main -->

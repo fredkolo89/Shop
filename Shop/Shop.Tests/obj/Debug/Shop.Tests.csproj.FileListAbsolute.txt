@@ -17,3 +17,5 @@ D:\repozutoriumŁukasza\Shop\Shop.Tests\bin\Debug\System.Web.WebPages.Deployment
 D:\repozutoriumŁukasza\Shop\Shop.Tests\obj\Debug\Shop.Tests.csprojResolveAssemblyReference.cache
 D:\repozutoriumŁukasza\Shop\Shop.Tests\obj\Debug\Shop.Tests.dll
 D:\repozutoriumŁukasza\Shop\Shop.Tests\obj\Debug\Shop.Tests.pdb
+D:\repozutoriumŁukasza\Shop\Shop.Tests\bin\Debug\System.Web.Optimization.dll
+D:\repozutoriumŁukasza\Shop\Shop.Tests\bin\Debug\System.Web.Optimization.xml
