@@ -19,6 +19,10 @@ namespace Shop.Controllers
 
             return View();
         }
+
+     
+
+        [ChildActionOnly]
         public ActionResult GetCategoryList()
         {
              using (db = new ShopContext())
@@ -29,10 +33,7 @@ namespace Shop.Controllers
             }
         }
 
-        public ActionResult Contact()
-        {
-            return View("Contact");
-        }
+    
 
     }
 }

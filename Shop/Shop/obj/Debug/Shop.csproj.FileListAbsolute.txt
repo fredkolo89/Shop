@@ -39,7 +39,6 @@ D:\repozutoriumŁukasza\Shop\Shop\bin\System.Web.Webpages.Deployment.xml
 D:\repozutoriumŁukasza\Shop\Shop\bin\System.Web.Webpages.Razor.xml
 D:\repozutoriumŁukasza\Shop\Shop\bin\System.Web.Helpers.xml
 D:\repozutoriumŁukasza\Shop\Shop\bin\System.Web.Mvc.xml
-D:\repozutoriumŁukasza\Shop\Shop\obj\Debug\Shop.csprojResolveAssemblyReference.cache
 D:\repozutoriumŁukasza\Shop\Shop\obj\Debug\Shop.dll
 D:\repozutoriumŁukasza\Shop\Shop\obj\Debug\Shop.pdb
 D:\repozutoriumŁukasza\Shop\Shop\bin\Antlr3.Runtime.dll

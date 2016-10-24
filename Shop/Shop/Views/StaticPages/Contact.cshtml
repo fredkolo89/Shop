@@ -1,4 +1,5 @@
-﻿
+﻿@using Shop.Models
+@model Shop.Models.Contact
 @{
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,14 +17,26 @@
 
         <div id="contact_form">
             <h2>Write your message</h2>
-            <form method="post" name="contact" action="#">
-                <label for="author">Name:</label> <input type="text" id="author" name="author" class="input_field" />
-                <label for="email">Email:</label> <input type="text" id="email" name="email" class="input_field" />
-                <label for="subject">Subject:</label> <input type="text" id="subject" name="email" class="input_field" />
-                <label for="text">Message:</label> <textarea id="text" name="text" rows="0" cols="0" class="required"></textarea>
-                <input type="submit" name="Submit" value="Submit" class="submit_btn" />
-            </form>
+            @using (Html.BeginForm("SendMessage", "StaticPages",FormMethod.Post))
+            {
+                @Html.LabelFor(m=>m.Name)         @Html.TextBoxFor(m => m.Name, new { @class = "input_field", @id = "author" })//       <input type="text" id="author" name="author" class="input_field" />//<input type="text" id="author" name="author" class="input_field" />
+                @Html.LabelFor(m =>m.Mail)          @Html.TextBoxFor(m => m.Mail, new { @class = "input_field", @id = "email" })    //  <input type="text" id="email" name="email" class="input_field" />               //<label for="email">Email:</label> <input type="text" id="email" name="email" class="input_field" />
+                @Html.LabelFor(m => m.Subject)        @Html.TextBoxFor(m => m.Subject, new { @class = "input_field", @id = "subject" })   //<input type="text" id="subject" name="email" class="input_field" />  //   <label for="subject">Subject:</label> <input type="text" id="subject" name="email" class="input_field" />
+                @Html.LabelFor(m => m.Message)         @Html.TextAreaFor(m => m.Message, new { @class = "required", @id = "text" }) //  <textarea id="text" name="text" rows="0" cols="0" class="required"></textarea>
+                <input type="submit" name="Submit" value="Wyślij" class="submit_btn" />
+
+            }
+            
+
+ 
         </div>
+        
+        <div>@Html.ValidationSummary()</div>
+        @if (ViewBag.IsAdded == true)
+        {
+            <div>Wysłano wiadomość</div>
+
+        }
     </div>
 
     <div class="col col_2">
@@ -59,5 +72,3 @@
 
     <div class="clear"></div>
 </div> <!-- END of main -->
-
-
