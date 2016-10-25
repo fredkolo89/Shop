@@ -51,3 +51,4 @@ D:\repozutoriumŁukasza\Shop\Shop\bin\System.Web.Optimization.xml
 D:\repozutoriumŁukasza\Shop\Shop\bin\Glimpse.AspNet.dll
 D:\repozutoriumŁukasza\Shop\Shop\bin\Glimpse.Core.dll
 D:\repozutoriumŁukasza\Shop\Shop\bin\Glimpse.Mvc5.dll
+D:\repozutoriumŁukasza\Shop\Shop\obj\Debug\Shop.csprojResolveAssemblyReference.cache

@@ -30,10 +30,26 @@ namespace Shop.Controllers
                 {
                     db.Contact.Add(contact);
                     db.SaveChanges();
-                    ViewBag.IsAdded = true;
+                    //tu jest wzorzec Wzorzec Post-Redirect-Get, zeby jak 
+                    //klikniesz odswiez na formularzu to zeby nie wysylal sie jeszcze raz
+                    // tylko zeby poszedl normalny get
+
+                    //temdata to stryktura która przechowuje dane tylko na dwa 
+                    //żadania czyli tylko na to przekierowanie
+                    TempData["name"] = contact.Name;
+                    return RedirectToAction("RedirectFromSendMessage");
                 }
-                return View("Contact", new Contact());
+              
             }
+        }
+
+        public ActionResult RedirectFromSendMessage()
+        {
+            //ViewBagi ukryja diva z formularzem i odkryja z Informacja ze wysłano
+            ViewBag.hide = "hide";
+            ViewBag.visible = "";
+            ViewBag.Information = string.Format("Dzieki {0} za kontakt z nami", TempData["name"]);
+            return View("contact");
         }
     }
 }
