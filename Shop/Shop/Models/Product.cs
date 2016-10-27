@@ -17,7 +17,7 @@ namespace Shop.Models
         public bool Avaliability { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
-
+        public DateTime DateAdded { get; set; }
         public virtual Category Category { get; set; }
         public virtual ICollection<Order> Order { get; set; }
     }

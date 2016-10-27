@@ -1,0 +1,19 @@
+﻿@using Shop.Infractructure
+@model Shop.ViewModels.ListOfProducts
+
+<div class="product">
+    <h1>New Products</h1>
+    @foreach (var item in Model.products)
+    {
+        <div class="product_box">
+            <div class="img_box">
+                <span></span>
+                <a href="productdetail.html"><img src="@Url.ProductImage(item.ImagePath)" alt="image" style='height: 100%; width: 100%; object-fit: contain' /></a>
+            </div>
+            <h2><a href="productdetail.html"></a>@item.Name</h2>
+            <p class="price">@item.Price $</p>
+        </div>
+    }
+ 
+
+</div>

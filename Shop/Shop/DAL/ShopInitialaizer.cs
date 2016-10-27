@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using Shop.Models;
 
@@ -28,21 +29,47 @@ namespace Shop.DAL
             {
                 Name = "Laptop Asus 15 cali, i7 2.0 GHz",
                 Brand = "Asus",
-                CategoryId = 2,
+                CategoryId = 1,
                 ImagePath = "asus1.jpg",
                 Description = "Mocny laptop Asus'a z wydajnym procesorem i kartą grafiki",
                 Avaliability = true,
-                Price = 2099
+                Price = 2099,
+                DateAdded = new DateTime(2016, 08, 23)
             });
             products.Add(new Product()
             {
                 Name = "Lenovo 13 cali, i3 1.5 GHz",
                 Brand = "Lenovo",
-                CategoryId = 2,
+                CategoryId = 1,
                 ImagePath = "lenovo1.jpg",
                 Description = "Laptop Lenovo, ze zintegrowaną grafiką i pojemnym ukumulatorem",
                 Avaliability = true,
-                Price = 1699
+                Price = 1699,
+                DateAdded = new DateTime(2016, 07, 23)
+
+            });
+            products.Add(new Product()
+            {
+                Name = "Telefon Sony Xperia S 5 cali",
+                Brand = "Sony",
+                CategoryId = 2,
+                ImagePath = "sony1.jpg",
+                Description = "Ciekawy telefon SOny Xperia z perfekcyjnym ekranem",
+                Avaliability = true,
+                Price = 1122,
+                DateAdded = new DateTime(2016, 03, 23)
+            });
+            products.Add(new Product()
+            {
+                Name = "Samsung Galaxy S6 edge ",
+                Brand = "Samsung",
+                CategoryId = 2,
+                ImagePath = "samsung1.jpg",
+                Description = "Doskonały smartfon Samsung Galaxy s6 edge z zakrzywionym ekranem",
+                Avaliability = true,
+                Price = 2355,
+                DateAdded = new DateTime(2016, 01, 23)
+
             });
 
             products.ForEach(c => context.Product.Add(c));
