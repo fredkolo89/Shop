@@ -38,7 +38,7 @@ namespace Shop.Controllers
             using (db = new ShopContext())
             {
                 ListOfProducts products = new ListOfProducts();
-                products.products = db.Product.OrderByDescending(p => p.DateAdded).Take(3).ToList();
+                products.products = db.Product.OrderByDescending(p => p.DateAdded).Take(4).ToList();
                 return PartialView("_NewProducts", products);
             }
         }
@@ -48,7 +48,7 @@ namespace Shop.Controllers
             using (db = new ShopContext())
             {
                 ListOfProducts products = new ListOfProducts();
-                products.products = db.Product.Take(3).ToList();
+                products.products = db.Product.OrderByDescending(p => p.DateAdded).Take(4).ToList();
                 return PartialView("_PopularProducts", products);
             }
         }
