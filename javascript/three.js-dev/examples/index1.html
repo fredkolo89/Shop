@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ThreeJs</title>
+<meta charset="utf-8">
+</head>
+<body>
+
+<style type="text/css">
+body{
+background:white;
+margin: 0;
+padding:0;
+overflow:hidden;
+}
+
+</style>
+<script src="three.min.js"></script>
+<script src="TrackballControls.js"></script>
+		<script src="CanvasRenderer.js"></script>
+	<script src="../build/three.js"></script>
+
+		<script src="js/renderers/Projector.js"></script>
+		<script src="js/renderers/CanvasRenderer.js"></script>
+
+		<script src="js/libs/stats.min.js"></script>
+
+
+<script>
+var camera, controls, scene, renderer;
+ 
+
+ 
+camera = new THREE.PerspectiveCamera(45,window.innerWdth/window.innerHeight,1,1000);
+camera.position.z=800;
+camera.position.y=-800;
+camera.position.x=0.70;
+<!--
+controls=new THREE.TrackballControls(camera);
+controls.addEventListener('change',render);
+-->
+scene = new THREE.Scene();
+var geometry = new THREE.CubeGeometry(100,100,100);
+var material = new THREE.MeshNormalMaterial();
+var mesh = new THREE.Mesh(geometry,material);
+
+renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+ renderer.setClearColor(0xEEEEEE, 1);
+ document.body.appendChild(renderer.domElement);
+scene = new THREE.Scene();
+scene.add(mesh);
+renderer.render(scene,camera);
+<!--
+
+
+function animate(){
+requestAnimationFrame(animate);
+controls.update();
+
+}
+
+function render(){
+				renderer.render( scene, camera );
+
+}
+-->
+</script>
+</body>
+
+</html>
