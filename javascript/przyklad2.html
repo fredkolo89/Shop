@@ -57,6 +57,10 @@ ul a:hover {
  		 	<img src="pizza.jpg" id="big" alt="Smiley face" height="80" width="80">
 
  		</td>
+ 		<td>
+ 		 	<img src="tomatoesTexture.png" id="tomatoes" alt="Smiley face" height="80" width="80">
+
+ 		</td>
  	</tr>
  </table>
  </div>
@@ -70,16 +74,20 @@ ul a:hover {
 	<script>
 		var small = document.getElementById('small');
 		small.addEventListener("click",function() {
-   			 addPizza(100);
+   			 addPizza(50);
 		}, false);
 
 		var medium = document.getElementById('medium');
 		medium.addEventListener("click",function() {
-   			 addPizza(200);
+   			 addPizza(100);
 		}, false);
 		var big = document.getElementById('big');
 		big.addEventListener("click",function() {
-   			 addPizza(300);
+   			 addPizza(200);
+		}, false);
+		var tomatoes = document.getElementById('tomatoes');
+		tomatoes.addEventListener("click",function() {
+   			 addTomatoes();
 		}, false);
 
 				init();
@@ -89,12 +97,30 @@ ul a:hover {
 			if(mesh){
  					scene.remove(mesh);
 			}
-				var geometry = new THREE.BoxBufferGeometry( size, size, size );
-				var material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
+				var segments = 32,
+				    radius = size,
+		 			texture = THREE.ImageUtils.loadTexture('pizzaTexture.jpg'),
+       				material = new THREE.MeshBasicMaterial({map: texture}),
+				//material = new THREE.MeshBasicMaterial( { color: 0xF0C400, side: THREE.DoubleSide } );
+					geometry = new THREE.CircleGeometry( radius, segments );			 
 				mesh = new THREE.Mesh( geometry, material );
+
 				scene.add(mesh);
-			
-           	
+          	
+			}
+
+			function addTomatoes(){
+ 
+				var segments = 32,
+				    radius = 30,
+		 			texture = THREE.ImageUtils.loadTexture('tomatoesTexture.png'),
+       				material = new THREE.MeshBasicMaterial({map: texture}),
+				//material = new THREE.MeshBasicMaterial( { color: 0xF0C400, side: THREE.DoubleSide } );
+					geometry = new THREE.CircleGeometry( radius, segments );			 
+				tomatoes = new THREE.Mesh( geometry, material );
+
+				scene.add(tomatoes);
+          	
 			}
 
  
@@ -112,21 +138,11 @@ ul a:hover {
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
 				camera.position.z = 400;
 
-				scene = new THREE.Scene();
-
-				
-				
-				 
-
-			
-
+				scene = new THREE.Scene();	
 				renderer = new THREE.WebGLRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				document.body.appendChild( renderer.domElement );
-
-				//
-
 				window.addEventListener( 'resize', onWindowResize, false );
 
 			}
@@ -144,8 +160,8 @@ ul a:hover {
 
 				requestAnimationFrame( animate );
 
-				mesh.rotation.x += 0.005;
-				mesh.rotation.y += 0.01;
+				// mesh.rotation.x += 0.005;
+				// mesh.rotation.y += 0.01;
 
 				renderer.render( scene, camera );
 
