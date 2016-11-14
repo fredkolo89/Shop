@@ -21,10 +21,11 @@
 		}
 
 		.dropdown-content {
+			align-content: center;
 		    display: none;
 		    position: absolute;
 		    background-color: none;
-		    min-width: 160px;
+		    min-width: 100px;
 		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 		}
 
@@ -64,21 +65,21 @@
 		 	<tr>
 	 		<td>
 			<div class="dropdown">
-			  <button class="dropbtn"> <img src="pizza.png" height=60 width="60"></button>
+			  <button class="dropbtn"> <img src="pizza.png" height=60 width="60" style="margin: auto; display: block; "></button>
 			  <div class="dropdown-content">
-			    <img src="pizza.png" id="small" alt="Smiley face" height="42" width="42"><br/>
-			    <img src="pizza.png" id="medium" alt="Smiley face" height=60 width="60"><br/>
-			    <img src="pizza.png" id="big" alt="Smiley face" height="80" width="80">
+			    <img src="pizza.png" id="small" alt="Smiley face" height="42" width="42" style="margin: auto; display: block; "><br/>
+			    <img src="pizza.png" id="medium" alt="Smiley face" height=60 width="60" style="margin: auto; display: block; "><br/>
+			    <img src="pizza.png" id="big" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; ">
 			  </div>
 			</div>
 
  
 	 		<td>
 	 			<div class="dropdown">
-			  <button class="dropbtn"> <img src="tomatoe.png" height=60 width="60"></button>
+			  <button class="dropbtn"> <img src="tomatoe.png" height=60 width="60" style="margin: auto; display: block; "></button>
 			  <div class="dropdown-content">
-			    <img src="tomatoesTexture.png"  id="tomatoes" alt="Smiley face" height="80" width="80"><br/>
-				<img  src="halfTomatoe.png" id="halfTomatoe" alt="Smiley face"  height="40" width="80" style="padding-top: 20px; padding-bottom: 20px"><br/>
+			    <img src="tomatoesTexture.png"  id="tomatoes" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
+				<img  src="halfTomatoe.png" id="halfTomatoe" alt="Smiley face"  height="40" width="80" style="padding-top: 20px; padding-bottom: 20px; margin: auto; display: block; "><br/>
 
 
 			  </div>
@@ -148,10 +149,10 @@
 				var segments = 32,
 				radius = size,
 		 		texture = THREE.ImageUtils.loadTexture('pizzaTexture.jpg'),
-       			aterial = new THREE.MeshBasicMaterial({map: texture}),
+       			material = new THREE.MeshBasicMaterial({map: texture}),
 				geometry = new THREE.CircleGeometry( radius, segments );			 
 				mesh = new THREE.Mesh( geometry, material );			 
-					mesh.position.z = -1;
+				mesh.position.z = -1;
 				scene.add(mesh); 	
 
 			objects.push( mesh );
