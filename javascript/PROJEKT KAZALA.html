@@ -5,6 +5,49 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
+
+		.dropbtn {
+		    background-color: none;
+		    color: white;
+		    padding: 16px;
+		    font-size: 16px;
+		    border: none;
+		    cursor: pointer;
+		}
+
+		.dropdown {
+		    position: relative;
+		    display: inline-block;
+		}
+
+		.dropdown-content {
+		    display: none;
+		    position: absolute;
+		    background-color: none;
+		    min-width: 160px;
+		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		}
+
+		.dropdown-content a {
+		    color: black;
+		    padding: 12px 16px;
+		    text-decoration: none;
+		    display: block;
+		}
+
+		.dropdown-content a:hover {background-color: none}
+
+		.dropdown:hover .dropdown-content {
+		    display: block;
+		}
+
+		.dropdown:hover .dropbtn {
+		    background-color: none;
+		}
+
+ 
+
+
 			body {
 				font-family: Monospace;
 				background-color: #f0f0f0;
@@ -14,35 +57,43 @@
 		</style>
 	</head>
 	<body>
-<canvas id='canvas1' style=" position: absolute; left: 0; top: 0; z-index: -10; background-color: #000000; "></canvas>
 
-
+	<canvas id='canvas1' style=" position: absolute; left: 0; top: 0; z-index: -10; background-color: #000000; "></canvas>
 	<div>
 	 <table>
 		 	<tr>
 	 		<td>
-	 		 <img src="pizza.jpg" id="small" alt="Smiley face" height="42" width="42">
+			<div class="dropdown">
+			  <button class="dropbtn"> <img src="pizza.png" height=60 width="60"></button>
+			  <div class="dropdown-content">
+			    <img src="pizza.png" id="small" alt="Smiley face" height="42" width="42"><br/>
+			    <img src="pizza.png" id="medium" alt="Smiley face" height=60 width="60"><br/>
+			    <img src="pizza.png" id="big" alt="Smiley face" height="80" width="80">
+			  </div>
+			</div>
 
-	 		</td>
-	 		<td> 
-	 			<img src="pizza.jpg" id="medium" alt="Smiley face" height=60 width="60">
-
-	 		</td>
+ 
 	 		<td>
-	 		 	<img src="pizza.jpg" id="big" alt="Smiley face" height="80" width="80">
+	 			<div class="dropdown">
+			  <button class="dropbtn"> <img src="tomatoe.png" height=60 width="60"></button>
+			  <div class="dropdown-content">
+			    <img src="tomatoesTexture.png"  id="tomatoes" alt="Smiley face" height="80" width="80"><br/>
+				<img  src="halfTomatoe.png" id="halfTomatoe" alt="Smiley face"  height="40" width="80" style="padding-top: 20px; padding-bottom: 20px"><br/>
 
-	 		</td>
-	 		<td>
-	 		 	<img src="tomatoesTexture.png" id="tomatoes" alt="Smiley face" height="80" width="80">
 
+			  </div>
+			</div>
+	 			
+	 		  
+	 		
 	 		</td>
+	 		
 	 	</tr>
 	 </table>
 	 </div>
 
 
 		<script src="three.js-dev/build/three.js"></script>
-
 		<script src="three.js-dev/examples/js/controls/TrackballControls.js"></script>
 
 		<script src="three.js-dev/examples/js/libs/stats.min.js"></script>
@@ -50,23 +101,27 @@
 		<script>
 
 
-
-var small = document.getElementById('small');
+		var small = document.getElementById('small');
 		small.addEventListener("click",function() {
-   			 addPizza(50);
+   			 addPizza(200);
 		}, false);
 
 		var medium = document.getElementById('medium');
 		medium.addEventListener("click",function() {
-   			 addPizza(100);
+   			 addPizza(400);
 		}, false);
 		var big = document.getElementById('big');
 		big.addEventListener("click",function() {
-   			 addPizza(200);
+   			 addPizza(600);
 		}, false);
 		var tomatoes = document.getElementById('tomatoes');
 		tomatoes.addEventListener("click",function() {
-   			 addTomatoes();
+   			 addTomatoes(Math.PI*2);
+		}, false);
+
+		var halfTomatoe = document.getElementById('halfTomatoe');
+		halfTomatoe.addEventListener("click",function() {
+   			 addTomatoes(Math.PI);
 		}, false);
 
 			var mesh;
@@ -86,38 +141,36 @@ var small = document.getElementById('small');
 
 	
 		function addPizza(size){
-			if(mesh){
- 					scene.remove(mesh);
+			if(mesh)
+			{
+ 				scene.remove(mesh);
 			}
 				var segments = 32,
-				    radius = size,
-		 			texture = THREE.ImageUtils.loadTexture('pizzaTexture.jpg'),
-       				material = new THREE.MeshBasicMaterial({map: texture}),
+				radius = size,
+		 		texture = THREE.ImageUtils.loadTexture('pizzaTexture.jpg'),
+       			aterial = new THREE.MeshBasicMaterial({map: texture}),
 				geometry = new THREE.CircleGeometry( radius, segments );			 
 				mesh = new THREE.Mesh( geometry, material );			 
 					mesh.position.z = -1;
 				scene.add(mesh); 	
 
 			objects.push( mesh );
-			}
+		}
 
-			function addTomatoes(){
+		function addTomatoes(angle){
  
-				var segments = 32,
-				    radius = 30,
-		 			texture = THREE.ImageUtils.loadTexture('tomatoesTexture.png'),
-       				material = new THREE.MeshBasicMaterial({map: texture}),
-					geometry = new THREE.CircleGeometry( radius, segments );			 
-				tomatoes = new THREE.Mesh( geometry, material );
+			var segments = 32,
+			radius = 50,
+		 	texture = THREE.ImageUtils.loadTexture('tomatoesTexture.png'),
+       		material = new THREE.MeshBasicMaterial({map: texture}),
+			geometry = new THREE.CircleGeometry( radius, segments,0, angle );			 
+			tomatoes = new THREE.Mesh( geometry, material );
 
-				scene.add(tomatoes);
-				objects.push( tomatoes );
-			 
+			scene.add(tomatoes);
+			objects.push( tomatoes ); 
           	
-			}
-
-
-	
+		}		
+			 	
 			function init() {
 
 				container = document.getElementById('canvas1') ;
