@@ -138,8 +138,8 @@
 				<img  src="halfTomatoe.png" id="halfTomatoe" alt="Smiley face"  height="40" width="80" style="padding-top: 20px; padding-bottom: 20px; margin: auto; display: block; "><br/>
 			  </div>
 			</div>	
-			<div class="dropdown">
-			  <button class="dropbtn" id="end" > <text  style="color: red;">Zakończ i obejrzyj pizze</text> </button>
+			<div class="dropdown" >
+			  <button class="dropbtn" id="end" style="display: none" > <text  style="color: red;">Zakończ i obejrzyj pizze</text> </button>
 			</div>  
 
 			
@@ -224,6 +224,8 @@
 			{
  				scene.remove(mesh);
 			}
+
+			document.getElementById('end').style.display = 'block';
 			 size = s;
 			var loader = new THREE.JSONLoader();
 			loader.load('pizza3d.json',function ( geometry ) {
