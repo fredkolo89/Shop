@@ -15,7 +15,7 @@
 		    cursor: pointer;
 		}
 
-		.dropdown {
+		.dropdown {`
 		    position: relative;
 		    display: inline-block;
 		}
@@ -98,7 +98,7 @@
 		<script src="three.js-dev/examples/js/controls/TrackballControls.js"></script>
 
 		<script src="three.js-dev/examples/js/libs/stats.min.js"></script>
-
+		<script src="three.js-dev/examples/js/loaders/OBJLoader.js"></script>
 		<script>
 
 
@@ -135,17 +135,39 @@
 			offset = new THREE.Vector3(),
 			intersection = new THREE.Vector3(),
 			INTERSECTED, SELECTED;
+      		var loader = new THREE.JSONLoader();
 
-
-		init();
+      			init();
 		animate();
+		
+	 
+	 
 
-	
+loader.load('pizza3d.json',function ( geometry ) {
+   	 
+       					 		texture = THREE.ImageUtils.loadTexture('pizza3d.jpg'),
+       			material = new THREE.MeshBasicMaterial({map: texture});
+    var mesh = new THREE.Mesh( geometry, material);
+    mesh.scale.set(50,50,50);
+    scene.add( mesh );
+});
+// loader.load(
+// 	// resource URL
+// 	'models/animated/monster/monster.js',
+// 	// Function when resource is loaded
+// 	function ( geometry, materials ) {
+// 		var material = new THREE.MultiMaterial( materials );
+// 		var object = new THREE.Mesh( geometry, material );
+// 		scene.add( object );
+// 	}
+// );
+	 
 		function addPizza(size){
 			if(mesh)
 			{
  				scene.remove(mesh);
 			}
+
 				var segments = 32,
 				radius = size,
 		 		texture = THREE.ImageUtils.loadTexture('pizzaTexture.jpg'),
@@ -156,6 +178,18 @@
 				scene.add(mesh); 	
 
 			objects.push( mesh );
+		}
+
+		function pizza3d(geometry, materials){
+	 
+       			material = new THREE.MeshFaceMaterial(materials);
+				 			 
+				mesh = new THREE.Mesh( geometry, material );			 
+				mesh.position.z = -100;
+				scene.add(mesh); 	
+
+				objects.push( mesh );	
+
 		}
 
 		function addTomatoes(angle){

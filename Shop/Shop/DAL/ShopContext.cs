@@ -18,7 +18,7 @@ namespace Shop.DAL
 
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Product { get; set; }
-        public DbSet<Account> Account { get; set; }
+       // public DbSet<Account> Account { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<PositionOrder> PositionOrder { get; set; }
         public DbSet<Contact> Contact { get; set; }

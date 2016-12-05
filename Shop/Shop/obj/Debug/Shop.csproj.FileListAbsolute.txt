@@ -62,3 +62,5 @@ C:\Users\Łukasz\Documents\ShopRepo\Shop\Shop\bin\WebGrease.dll
 C:\Users\Łukasz\Documents\ShopRepo\Shop\Shop\bin\Antlr3.Runtime.pdb
 C:\Users\Łukasz\Documents\ShopRepo\Shop\Shop\bin\Newtonsoft.Json.xml
 C:\Users\Łukasz\Documents\ShopRepo\Shop\Shop\bin\System.Web.Optimization.xml
+D:\repozutoriumŁukasza\Shop\Shop\bin\Microsoft.Web.Infrastructure.dll
+D:\repozutoriumŁukasza\Shop\Shop\obj\Debug\Shop.csprojResolveAssemblyReference.cache
