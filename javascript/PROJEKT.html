@@ -85,6 +85,7 @@
 		{
 			float: left;
 			width: 300;
+			height: 600;
 			background-color: black;
 		}
 		#rightSite
@@ -96,9 +97,12 @@
 		}
 		#footer
 		{
-			clear: both;
-			background-color: red;
-			min-height: 220px;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;				
+			background-color: red;			
+			height: 60px;
 		}
 		
 		</style>
@@ -140,6 +144,10 @@
 					
 		</div>
 		
+		<div id="footer">
+					
+		</div>
+		
 	
 		
 
@@ -154,19 +162,21 @@
 		<script>
 
 
-var small = document.getElementById('small');
+		var small = document.getElementById('small');
 		small.addEventListener("click",function() {
    			 addPizza(200);
-		}, false);
+   		}, false);
 
 		var medium = document.getElementById('medium');
 		medium.addEventListener("click",function() {
-   			 addPizza(300);
+   			 addPizza(300);   			 
 		}, false);
+
 		var big = document.getElementById('big');
 		big.addEventListener("click",function() {
    			 addPizza(500);
 		}, false);
+
 		var tomatoes = document.getElementById('tomatoes');
 		tomatoes.addEventListener("click",function() {
    			 addTomatoes(Math.PI*2);
@@ -207,7 +217,7 @@ var small = document.getElementById('small');
     			 mesh = new THREE.Mesh( geometry, material);
    				 mesh.scale.set(size,50,size);
    				 rotateObject(mesh, 90,0,0);
-   				 mesh.position.z = -110;
+   				 mesh.position.z = -140;			
    				 scene.add( mesh );
    				 //objects.push( mesh );
 			});			
