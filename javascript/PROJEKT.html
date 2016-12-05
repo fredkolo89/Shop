@@ -191,60 +191,30 @@
 			INTERSECTED, SELECTED;
       		var loader = new THREE.JSONLoader();
 
-      			init();
+      	init();
 		animate();
-		
-	 
-	 
 
-loader.load('pizza3d.json',function ( geometry ) {
-   	 
-       					 		texture = THREE.ImageUtils.loadTexture('pizza3d.jpg'),
-       			material = new THREE.MeshBasicMaterial({map: texture});
-    var mesh = new THREE.Mesh( geometry, material);
-    mesh.scale.set(50,50,50);
-    scene.add( mesh );
-});
-// loader.load(
-// 	// resource URL
-// 	'models/animated/monster/monster.js',
-// 	// Function when resource is loaded
-// 	function ( geometry, materials ) {
-// 		var material = new THREE.MultiMaterial( materials );
-// 		var object = new THREE.Mesh( geometry, material );
-// 		scene.add( object );
-// 	}
-// );
-	 
 		function addPizza(size){
 			if(mesh)
 			{
  				scene.remove(mesh);
 			}
 
-				var segments = 32,
-				radius = size,
-		 		texture = THREE.ImageUtils.loadTexture('pizzaTexture.jpg'),
-       			material = new THREE.MeshBasicMaterial({map: texture}),
-				geometry = new THREE.CircleGeometry( radius, segments );			 
-				mesh = new THREE.Mesh( geometry, material );			 
-				mesh.position.z = -1;
-				scene.add(mesh); 	
-
-			objects.push( mesh );
+			var loader = new THREE.JSONLoader();
+			loader.load('pizza3d.json',function ( geometry ) {
+   	 
+       			texture = THREE.ImageUtils.loadTexture('pizza3d.jpg'),
+       			material = new THREE.MeshBasicMaterial({map: texture});
+    			var mesh = new THREE.Mesh( geometry, material);
+   				 mesh.scale.set(50,50,50);
+   				 rotateObject(mesh, 90,0,0);
+   				 mesh.position.z = -100;
+   				 scene.add( mesh );
+   				 objects.push( mesh );
+			});			
 		}
 
-		function pizza3d(geometry, materials){
-	 
-       			material = new THREE.MeshFaceMaterial(materials);
-				 			 
-				mesh = new THREE.Mesh( geometry, material );			 
-				mesh.position.z = -100;
-				scene.add(mesh); 	
-
-				objects.push( mesh );	
-
-		}
+ 
 
 		function addTomatoes(angle){
  
@@ -259,6 +229,18 @@ loader.load('pizza3d.json',function ( geometry ) {
 			objects.push( tomatoes ); 
           	
 		}		
+
+		function rotateObject(object,degreeX=0, degreeY=0, degreeZ=0){
+
+		   degreeX = (degreeX * Math.PI)/180;
+		   degreeY = (degreeY * Math.PI)/180;
+		   degreeZ = (degreeZ * Math.PI)/180;
+
+		   object.rotateX(degreeX);
+		   object.rotateY(degreeY);
+		   object.rotateZ(degreeZ);
+
+		}
 			 	
 			function init() {
 
