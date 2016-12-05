@@ -15,9 +15,9 @@
 		    cursor: pointer;
 		}
 
-		.dropdown {`
+		.dropdown {
 		    position: relative;
-		    display: inline-block;
+		    display: inline-block;			
 		}
 
 		.dropdown-content {
@@ -39,7 +39,7 @@
 		.dropdown-content a:hover {background-color: none}
 
 		.dropdown:hover .dropdown-content {
-		    display: block;
+		    display: inline-block;
 		}
 
 		.dropdown:hover .dropbtn {
@@ -55,15 +55,63 @@
 				margin: 0px;
 				overflow: hidden;
 			}
+			
+		#container
+		{
+			width: auto;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		#logo
+		{
+			height: 100px;
+			background-color: blue;
+			color: white;
+			text-align: center;
+			padding: 5px;
+			font-size: 20px;
+		}
+		
+		#leftSight
+		{
+			float: left;
+			background-color: yellow;
+			width: 120px;
+			min-height: 620px;
+		}
+		
+		#widokCenter
+		{
+			float: left;
+			width: 300;
+			background-color: black;
+		}
+		#rightSite
+		{
+			float: right;
+			background-color: yellow;
+			width: 120px;
+			min-height: 620px;
+		}
+		#footer
+		{
+			clear: both;
+			background-color: red;
+			min-height: 220px;
+		}
+		
 		</style>
 	</head>
 	<body>
 
-	<canvas id='canvas1' style=" position: absolute; left: 0; top: 0; z-index: -10; background-color: #000000; "></canvas>
-	<div>
-	 <table>
-		 	<tr>
-	 		<td>
+	<div id="container">
+		<div id="logo">
+			<h1>Witamy w naszej restauracji</h1>
+		</div>
+	
+		<div id="leftSight">
+		
 			<div class="dropdown">
 			  <button class="dropbtn"> <img src="pizza.png" height=60 width="60" style="margin: auto; display: block; "></button>
 			  <div class="dropdown-content">
@@ -72,27 +120,33 @@
 			    <img src="pizza.png" id="big" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; ">
 			  </div>
 			</div>
-
- 
-	 		<td>
-	 			<div class="dropdown">
+			
+			<div class="dropdown">
 			  <button class="dropbtn"> <img src="tomatoe.png" height=60 width="60" style="margin: auto; display: block; "></button>
 			  <div class="dropdown-content">
 			    <img src="tomatoesTexture.png"  id="tomatoes" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
 				<img  src="halfTomatoe.png" id="halfTomatoe" alt="Smiley face"  height="40" width="80" style="padding-top: 20px; padding-bottom: 20px; margin: auto; display: block; "><br/>
-
-
 			  </div>
 			</div>
-	 			
-	 		  
-	 		
-	 		</td>
-	 		
-	 	</tr>
-	 </table>
-	 </div>
+			
+		</div>
+		
+		
+		<div id="widokCenter">
+					<canvas id='canvas1' style=" position: absolute; left: 0; top: 0; z-index: -10; background-color: #000000; "></canvas>
+		</div>
+		
+		<div id="rightSite">
+					
+		</div>
+		
+		<div id="footer">
+					
+		</div>
+		
 
+	 </div>
+	
 
 		<script src="three.js-dev/build/three.js"></script>
 		<script src="three.js-dev/examples/js/controls/TrackballControls.js"></script>
