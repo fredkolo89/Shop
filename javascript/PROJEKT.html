@@ -156,16 +156,16 @@
 
 var small = document.getElementById('small');
 		small.addEventListener("click",function() {
-   			 addPizza(40);
+   			 addPizza(200);
 		}, false);
 
 		var medium = document.getElementById('medium');
 		medium.addEventListener("click",function() {
-   			 addPizza(60);
+   			 addPizza(300);
 		}, false);
 		var big = document.getElementById('big');
 		big.addEventListener("click",function() {
-   			 addPizza(80);
+   			 addPizza(500);
 		}, false);
 		var tomatoes = document.getElementById('tomatoes');
 		tomatoes.addEventListener("click",function() {
@@ -178,6 +178,7 @@ var small = document.getElementById('small');
 		}, false);
 
 			var mesh;
+			var size;
 			var container, stats;
 			var camera, controls, scene, renderer;
 			var objects = [];
@@ -192,12 +193,12 @@ var small = document.getElementById('small');
       	init();
 		animate();
 
-		function addPizza(size){
+		function addPizza(s){
 			if(mesh)
 			{
  				scene.remove(mesh);
 			}
-			var size = size;
+			 size = s;
 			var loader = new THREE.JSONLoader();
 			loader.load('pizza3d.json',function ( geometry ) {
    	 
@@ -323,7 +324,7 @@ var small = document.getElementById('small');
 
 				var intersects = raycaster.intersectObjects( objects );
 
-				if ( intersects.length > 0 ) {
+				if ( intersects.length > 0   ) {
 
 					if ( INTERSECTED != intersects[ 0 ].object ) {
 
@@ -367,8 +368,14 @@ var small = document.getElementById('small');
 					SELECTED = intersects[ 0 ].object;
 
 					if ( raycaster.ray.intersectPlane( plane, intersection ) ) {
+    			 
+    			 	 	
+	    			 	 	 
+	    				 			offset.copy( intersection ).sub( SELECTED.position );
 
-						offset.copy( intersection ).sub( SELECTED.position );
+	    			 	 	 
+    			 		 
+                    
 
 					}
 
@@ -384,6 +391,11 @@ var small = document.getElementById('small');
 
 				controls.enabled = true;
 
+				 console.log(SELECTED.position.x);
+
+				 
+	    		SELECTED.position.x=limitDrag(SELECTED.position.x,size);
+	    		SELECTED.position.y=limitDrag(SELECTED.position.y,size);
 				if ( INTERSECTED ) {
 
 					SELECTED = null;
@@ -394,7 +406,18 @@ var small = document.getElementById('small');
 
 			}
 
-			//
+			function limitDrag(position, limit)
+			{
+				if(position>limit){
+					return limit;
+				}
+				else if (position<(0-limit)) {
+					return (0-limit);
+				}
+				else{
+					return position;
+				}
+			}
 
 			function animate() {
 
