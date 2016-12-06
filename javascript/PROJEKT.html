@@ -27,14 +27,13 @@
 		
 			align-content: center;
 		    display: none;
-		    position: absolute;
+			/*position: absolute;*/
 		    background-color: none;
 		    min-width: 100px;
 		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 		}
 
 		.dropdown-content a {
-
 		    color: black;
 		    padding: 12px 16px;
 		    text-decoration: none;
@@ -44,7 +43,7 @@
 		.dropdown-content a:hover {background-color: none}
 
 		.dropdown:hover .dropdown-content {
-		    display: inline-block;
+		     display: initial;
 		}
 
 		.dropdown:hover .dropbtn {
@@ -113,7 +112,10 @@
 		</style>
 	</head>
 	<body>
-					<canvas id='canvas1' style=" position: absolute; left: 0; top: 0; z-index: -10; background-color: #000000; "></canvas>
+					
+	<div id="widokCenter">
+		<canvas id='canvas' style=" position: absolute; left: 0; top: 0; z-index: -10; background-color: #000000; "></canvas>
+	</div>
 
 	<div id="container">
 		<div id="logo">
@@ -134,20 +136,24 @@
 			<div class="dropdown">
 			  <button class="dropbtn"> <img src="tomatoe.png" height=60 width="60" style="margin: auto; display: block; "></button>
 			  <div class="dropdown-content">
+			    <img src="tomatoesTexture.png"  id="tomatoe" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
+				<img  src="halfTomatoetexture.png" id="halfTomatoe" alt="Smiley face"  height="40" width="80" style="padding-top: 20px; padding-bottom: 20px; margin: auto; display: block; "><br/>
+			  </div>
+			</div>	
+
+			<div class="dropdown">
+			  <button class="dropbtn"> <img src="onion.png" height=60 width="60" style="margin: auto; display: block; "></button>
+			 <!--  <div class="dropdown-content">
 			    <img src="tomatoesTexture.png"  id="tomatoes" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
 				<img  src="halfTomatoe.png" id="halfTomatoe" alt="Smiley face"  height="40" width="80" style="padding-top: 20px; padding-bottom: 20px; margin: auto; display: block; "><br/>
-			  </div>
+			  </div> -->
 			</div>	
 			<div class="dropdown" >
 			  <button class="dropbtn" id="end" style="display: none" > <text  style="color: red;">Zakończ i obejrzyj pizze</text> </button>
-			</div>  
+			</div> 			
+		</div>	
+		
 
-			
-		</div>
-		
-		
-		<div id="widokCenter">
-		</div>
 		
 		<div id="rightSite">
 					
@@ -162,310 +168,12 @@
 
 	 </div>
 	
-
 		<script src="three.js-dev/build/three.js"></script>
 		<script src="three.js-dev/examples/js/controls/TrackballControls.js"></script>
-
 		<script src="three.js-dev/examples/js/libs/stats.min.js"></script>
 		<script src="three.js-dev/examples/js/loaders/OBJLoader.js"></script>
-		<script>
-		
-
-		var end = document.getElementById('end');
-		end.addEventListener("click",function() {
-   			document.getElementById('container').style.display = 'none';
-   			controls.enabled = true;
-   		}, false);
-
-
-		var small = document.getElementById('small');
-		small.addEventListener("click",function() {
-   			 addPizza(200);
-   		}, false);
-
-		var medium = document.getElementById('medium');
-		medium.addEventListener("click",function() {
-   			 addPizza(300);   			 
-		}, false);
-
-		var big = document.getElementById('big');
-		big.addEventListener("click",function() {
-   			 addPizza(500);
-		}, false);
-
-		var tomatoes = document.getElementById('tomatoes');
-		tomatoes.addEventListener("click",function() {
-   			 addTomatoes(Math.PI*2);
-		}, false);
-
-		var halfTomatoe = document.getElementById('halfTomatoe');
-		halfTomatoe.addEventListener("click",function() {
-   			 addTomatoes(Math.PI);
-		}, false);
-
-			var mesh;
-			var size;
-			var container, stats;
-			var camera, controls, scene, renderer;
-			var objects = [];
-			var plane = new THREE.Plane();
-			var raycaster = new THREE.Raycaster();
-			var mouse = new THREE.Vector2(),
-			offset = new THREE.Vector3(),
-			intersection = new THREE.Vector3(),
-			INTERSECTED, SELECTED;
-      		var loader = new THREE.JSONLoader();
-
-      	init();
-		animate();
-
-		function addPizza(s){
-			if(mesh)
-			{
- 				scene.remove(mesh);
-			}
-
-			document.getElementById('end').style.display = 'block';
-			 size = s;
-			var loader = new THREE.JSONLoader();
-			loader.load('pizza3d.json',function ( geometry ) {
-   	 
-       			texture = THREE.ImageUtils.loadTexture('pizza3d.jpg'),
-       			material = new THREE.MeshBasicMaterial({map: texture});
-    			 mesh = new THREE.Mesh( geometry, material);
-   				 mesh.scale.set(size,200,size);
-   				 rotateObject(mesh, 90,0,0);
-   				 mesh.position.z = -320;			
-   				 scene.add( mesh );
-   				 //objects.push( mesh );
-			});			
-		}
-
- 
-
-		function addTomatoes(angle){
- 
-			var segments = 32,
-			radius = 50,
-		 	texture = THREE.ImageUtils.loadTexture('tomatoesTexture.png'),
-       		material = new THREE.MeshBasicMaterial({map: texture}),
-			geometry = new THREE.CircleGeometry( radius, segments,0, angle );			 
-			tomatoes = new THREE.Mesh( geometry, material );
-
-			scene.add(tomatoes);
-			objects.push( tomatoes ); 
-          	
-		}		
-
-		function rotateObject(object,degreeX=0, degreeY=0, degreeZ=0){
-
-		   degreeX = (degreeX * Math.PI)/180;
-		   degreeY = (degreeY * Math.PI)/180;
-		   degreeZ = (degreeZ * Math.PI)/180;
-
-		   object.rotateX(degreeX);
-		   object.rotateY(degreeY);
-		   object.rotateZ(degreeZ);
-
-		}
-			 	
-			function init() {
-
-				container = document.getElementById('canvas1') ;
-
-				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
-				camera.position.z = 1000;
-
-				controls = new THREE.TrackballControls( camera );
-				controls.rotateSpeed = 1.0;
-				controls.zoomSpeed = 1.2;
-				controls.panSpeed = 0.8;
-				controls.noZoom = false;
-				controls.noPan = false;
-				controls.staticMoving = true;
-				controls.dynamicDampingFactor = 0.3;
-
-				scene = new THREE.Scene();
-
-				scene.add( new THREE.AmbientLight( 0x505050 ) );
-
-				var light = new THREE.SpotLight( 0xffffff, 1.5 );
-				light.position.set( 0, 500, 2000 );
-				light.castShadow = true;
-
-				light.shadow = new THREE.LightShadow( new THREE.PerspectiveCamera( 50, 1, 200, 10000 ) );
-				light.shadow.bias = - 0.00022;
-
-				light.shadow.mapSize.width = 2048;
-				light.shadow.mapSize.height = 2048;
-
-				scene.add( light );
-
-				renderer = new THREE.WebGLRenderer( { antialias: true, canvas: container } );
-				renderer.setSize( 800, 600 );
-				renderer.setClearColor( 0xf0f0f0 );
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.sortObjects = false;
-
-				renderer.shadowMap.enabled = true;
-				renderer.shadowMap.type = THREE.PCFShadowMap;
-
-				renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				renderer.domElement.addEventListener( 'mousedown', onDocumentMouseDown, false );
-				renderer.domElement.addEventListener( 'mouseup', onDocumentMouseUp, false );
-
-				controls.enabled = false;
-				window.addEventListener( 'resize', onWindowResize, false );
-
-			}
-
-			function onWindowResize() {
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
-				renderer.setSize( window.innerWidth, window.innerHeight );
-
-			}
-
-			function onDocumentMouseMove( event ) {
-
-				event.preventDefault();
-
-				mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-				mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-				raycaster.setFromCamera( mouse, camera );
-
-				if ( SELECTED ) {
-
-					if ( raycaster.ray.intersectPlane( plane, intersection ) ) {
-
-						SELECTED.position.copy( intersection.sub( offset ) );
-
-					}
-
-					return;
-
-				}
-
-				var intersects = raycaster.intersectObjects( objects );
-
-				if ( intersects.length > 0   ) {
-
-					if ( INTERSECTED != intersects[ 0 ].object ) {
-
-						if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
-
-						INTERSECTED = intersects[ 0 ].object;
-						INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
-
-						plane.setFromNormalAndCoplanarPoint(
-							camera.getWorldDirection( plane.normal ),
-							INTERSECTED.position );
-
-					}
-
-					container.style.cursor = 'pointer';
-
-				} else {
-
-					if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
-
-					INTERSECTED = null;
-
-					container.style.cursor = 'auto';
-
-				}
-
-			}
-
-			function onDocumentMouseDown( event ) {
-
-				event.preventDefault();
-
-				raycaster.setFromCamera( mouse, camera );
-
-				var intersects = raycaster.intersectObjects( objects );
-
-				if ( intersects.length > 0 ) {
-
-					//controls.enabled = false;
-
-					SELECTED = intersects[ 0 ].object;
- 
-					if ( raycaster.ray.intersectPlane( plane, intersection ) ) {
-    			 
-    			 	
-	    			 	 	 
-	    				 			offset.copy( intersection ).sub( SELECTED.position );
-
-	    			 	 	 
-    			 		 
-                    
-
-					}
-
-					container.style.cursor = 'move';
-
-				}
-
-			}
-
-			function onDocumentMouseUp( event ) {
-
-				event.preventDefault();
-
-				//controls.enabled = true;
-
-				 console.log(SELECTED.position.x);
-
-				 
-	    		SELECTED.position.x=limitDrag(SELECTED.position.x,size);
-	    		SELECTED.position.y=limitDrag(SELECTED.position.y,size);
-
-				if ( INTERSECTED ) {
-
-					SELECTED = null;
-
-				}
-
-				container.style.cursor = 'auto';
-
-			}
-
-			function limitDrag(position, limit)
-			{
-				if(position>limit){
-					return limit;
-				}
-				else if (position<(0-limit)) {
-					return (0-limit);
-				}
-				else{
-					return position;
-				}
-			}
-
-			function animate() {
-
-				requestAnimationFrame( animate );
-
-				render();
-				 
-
-			}
-
-			function render() {
-
-				controls.update();
-
-				renderer.render( scene, camera );
-
-			}
-
-		</script>
-
+		<script src="ApplicationFunctionality.js"></script>		
+		<script src="Settings.js"></script>	
+	    <script src="DesigningPizza.js"></script>	
 	</body>
 </html>
