@@ -1,6 +1,6 @@
 	 
 		 
-		var camera,container, pizzaObject ,controls, scene, renderer,sizePizza,pizza,
+		var camera,container, pizzaObject ,controls, scene, renderer,sizePizza,
 			objects = [],
 		 	plane = new THREE.Plane(),
 			raycaster = new THREE.Raycaster(),
@@ -24,7 +24,7 @@
 
 			 	
 			function init() {				
-				 
+
 				setBasicProperties();
 			}			
 

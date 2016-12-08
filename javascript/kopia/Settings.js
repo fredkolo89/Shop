@@ -159,7 +159,6 @@
 
 			function limitDrag(position, limit)
 			{
- 
 				if(position>limit){
 					return limit;
 				}
