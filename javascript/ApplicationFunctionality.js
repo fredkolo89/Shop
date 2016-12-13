@@ -51,24 +51,23 @@ function Pizza(size){   /*  To jest definicja klasy  */
 		});		
 	    		
 	};
+}
 
-	// this.setSizeAndRotation=  function (size){
-		 
-	// 	this.pizza.scale.set(size,200,size);
-	//    	this.rotateObject(this.pizza, 90,0,0);
-	//    	this.pizza.position.z = -320;		
-	// };
-	// 	this.rotateObject =RotateObject;
-	// 	 function RotateObject  (object,degreeX=0, degreeY=0, degreeZ=0){
-	// 	degreeX = (degreeX * Math.PI)/180;
-	//     degreeY = (degreeY * Math.PI)/180;
-	// 	degreeZ = (degreeZ * Math.PI)/180;
+function Tomatoe(angle){
 
-	// 	object.rotateX(degreeX);
-	// 	object.rotateY(degreeY);
-	// 	object.rotateZ(degreeZ);
-	// };
+	this.segments = 32;
+	this.radius = 50;
+	this.nameOfTexture = 'tomatoesTexture.png';
+	this.angle= angle;
 
+
+	this.addTomatoe = function(){	
+		var texture = THREE.ImageUtils.loadTexture(this.nameOfTexture);
+		var	tomatoe = new THREE.Mesh( new THREE.CircleGeometry( this.radius, this.segments,0, this.angle ),
+			new THREE.MeshBasicMaterial({map: texture}) );
+		scene.add(tomatoe);
+		objects.push( tomatoe ); 
+	}
 }
 
 
@@ -84,7 +83,6 @@ function createPizzaHandler(nameElement, size){
 	 	pizza = new Pizza(size);	 	
 	 	pizza.addPizza();
 
-	 	//addPizza(size,scene);
 		}, false);
 	return handler;
 }  
@@ -92,22 +90,12 @@ function createPizzaHandler(nameElement, size){
 function createTomatoeHandler(nameElement, angle){	
 	var handler = document.getElementById(nameElement);
 	handler.addEventListener("click",function() {
-	 	addTomatoes(angle,objects,scene);
+	 	tomatoe = new Tomatoe(angle);
+	 	tomatoe.addTomatoe();	
 		}, false);
 	return handler;
 }  
 
-function addTomatoes(angle,objects,scene){
- 
-	var segments = 32;
-	var radius = 50;
-	var texture = THREE.ImageUtils.loadTexture('tomatoesTexture.png');
-	var	tomatoe = new THREE.Mesh( new THREE.CircleGeometry( radius, segments,0, angle ),
-		new THREE.MeshBasicMaterial({map: texture}) );
-
-	scene.add(tomatoe);
-	objects.push( tomatoe ); 
-}
 
 
 

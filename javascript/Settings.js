@@ -1,5 +1,6 @@
 		function setBasicProperties(){
 			setPizzaSize();
+			setGriedientSize();
 			setCamera();
 			setControls();
 			setCanvas();
@@ -11,6 +12,9 @@
 
 		function setPizzaSize(){
 			 sizePizza= { small:200,medium:300,big:500, presentSize:0}
+		}
+		function setGriedientSize(){
+			 sizeGriedient= { half:Math.PI, whole:Math.PI*2 }
 		}
 
 		function setRendering(){

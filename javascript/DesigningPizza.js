@@ -1,6 +1,6 @@
 	 
 		 
-		var camera,container, pizzaObject ,controls, scene, renderer,sizePizza,pizza,
+		var camera,container, pizzaObject ,controls, scene, renderer,sizePizza,sizeGriedient,pizza,
 			objects = [],
 		 	plane = new THREE.Plane(),
 			raycaster = new THREE.Raycaster(),
@@ -19,8 +19,8 @@
 		var big = createPizzaHandler('big',sizePizza.big);
 
 
-		var tomatoes = createTomatoeHandler('tomatoe',Math.PI*2);
-		var halfTomatoe = createTomatoeHandler('halfTomatoe',Math.PI);
+		var tomatoes = createTomatoeHandler('tomatoe',sizeGriedient.whole);
+		var halfTomatoe = createTomatoeHandler('halfTomatoe',sizeGriedient.half);
 
 			 	
 			function init() {				
