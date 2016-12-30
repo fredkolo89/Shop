@@ -35,7 +35,7 @@ namespace DecisionTree
             foreach (var item in Enum.GetNames(attribute.GetType())){
 
                 result += (double)list.Count(c => c.Atr == item)/list.Count()*(GetEntropy(list.Where(c => c.Atr == item).ToList()));
-            }
+                }
             return result;
         }
 
@@ -79,6 +79,20 @@ namespace DecisionTree
         {
             return Enumerable.Where(list, c => c.Decision == false).Count();
 
+        }
+
+        public double getBigEnthropy(double MainEntropy, List<double> list)
+        {
+            double result=0;
+
+            foreach(var ent in list )
+            {
+                if (result < MainEntropy - ent)
+                {
+                    result = MainEntropy - ent;
+                }
+           }
+             return result;
         }
     }
 }
