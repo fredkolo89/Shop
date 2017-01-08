@@ -38,7 +38,7 @@ namespace Mono.Samples.TexturedCube {
 
 		private void Initialize ()
 		{
-			textureIds = new int[2];
+			textureIds = new int[6];
 			context = Context;
 			xangle = 45;
 			yangle = 45;
@@ -129,10 +129,16 @@ namespace Mono.Samples.TexturedCube {
 
 			// create texture ids
 			GL.Enable (All.Texture2D);
-			GL.GenTextures (2, textureIds);
+			GL.GenTextures (6, textureIds);
 
-			LoadTexture (context, Resource.Drawable.pattern, textureIds [0]);
-			LoadTexture (context, Resource.Drawable.f_spot, textureIds [1]);
+			LoadTexture (context, Resource.Drawable.photo1, textureIds [0]);
+           LoadTexture(context, Resource.Drawable.photo2, textureIds[1]);
+            LoadTexture(context, Resource.Drawable.photo3, textureIds[2]);
+            LoadTexture(context, Resource.Drawable.photo4, textureIds[3]);
+            LoadTexture(context, Resource.Drawable.photo5, textureIds[4]);
+            LoadTexture(context, Resource.Drawable.photo6, textureIds[5]);
+ 
+
 
 			SetupCamera ();
 			RenderCube ();
@@ -196,13 +202,14 @@ namespace Mono.Samples.TexturedCube {
 
 		protected override void OnUnload (EventArgs e)
 		{
-			GL.DeleteTextures (2, textureIds);
+			GL.DeleteTextures (6, textureIds);
 		}
 
 		public void SwitchTexture ()
-		{
-			cur_texture = (cur_texture + 1) % textureIds.Length;
-			RenderCube ();
+		{   Random rnd = new Random(DateTime.Now.Millisecond);
+			//cur_texture = (cur_texture + 1) % textureIds.Length;
+        cur_texture = rnd.Next(0, textureIds.Length);
+            RenderCube ();
 		}
 
 		void RenderCube ()
@@ -244,7 +251,7 @@ namespace Mono.Samples.TexturedCube {
 		protected override void Dispose (bool disposing)
 		{
 			base.Dispose (disposing);
-			GL.DeleteTextures (2, textureIds);
+			GL.DeleteTextures (6, textureIds);
 		}
 
 		protected override void OnResize (EventArgs e)
@@ -271,7 +278,7 @@ namespace Mono.Samples.TexturedCube {
 			GL.TexParameterx (All.Texture2D, All.TextureWrapT, (int)All.ClampToEdge);
 
 			Bitmap b = BitmapFactory.DecodeResource (context.Resources, resourceId);
-
+           
 			Android.Opengl.GLUtils.TexImage2D ((int)All.Texture2D, 0, b, 0); 
 		}
 
