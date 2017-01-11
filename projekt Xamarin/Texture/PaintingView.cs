@@ -209,7 +209,7 @@ namespace Mono.Samples.TexturedCube {
 		{   Random rnd = new Random(DateTime.Now.Millisecond);
 			//cur_texture = (cur_texture + 1) % textureIds.Length;
         cur_texture = rnd.Next(0, textureIds.Length);
-            RenderCube ();
+          //  RenderCube ();
 		}
 
 		void RenderCube ()
@@ -224,11 +224,13 @@ namespace Mono.Samples.TexturedCube {
 			GL.Rotate(-xangle, 1, 0, 0);
 			GL.Rotate(-yangle, 0, 1, 0);
 
-			GL.BindTexture(All.Texture2D, textureIds [cur_texture]);
+			
 			GL.EnableClientState(All.VertexArray);
 			GL.EnableClientState(All.TextureCoordArray);
 			for (int i = 0; i < 6; i++) // draw each face
 			{
+                
+                GL.BindTexture(All.Texture2D, textureIds[i]);
 				float [] v = cubeVertexCoords [i];
 				float [] t = cubeTextureCoords [i];
 				// pin the data, so that GC doesn't move them, while used
@@ -242,6 +244,11 @@ namespace Mono.Samples.TexturedCube {
 					}
 				}
 			}
+
+
+
+
+
 			GL.DisableClientState(All.VertexArray);
 			GL.DisableClientState(All.TextureCoordArray);
 
