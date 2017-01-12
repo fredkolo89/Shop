@@ -24,23 +24,23 @@ namespace Mono.Samples.TexturedCube
 			PaintingView glp = FindViewById<PaintingView> (Resource.Id.paintingview);
 
 			// Find the views whose visibility will change
-			mMenuContainer = FindViewById (Resource.Id.hidecontainer);
-			mSwitchTexture = FindViewById (Resource.Id.switch_texture);
-			mSwitchTexture.Click += delegate { glp.SwitchTexture (); };
+            //mMenuContainer = FindViewById (Resource.Id.hidecontainer);
+            mSwitchTexture = FindViewById(Resource.Id.switch_texture);
+            mSwitchTexture.Click += delegate { glp.SwitchTexture (); };
 
-			// Find our buttons
-			Button showButton = FindViewById<Button>(Resource.Id.show);
-			Button hideButton = FindViewById<Button> (Resource.Id.hide);
+            //// Find our buttons
+            //Button showButton = FindViewById<Button>(Resource.Id.show);
+            //Button hideButton = FindViewById<Button> (Resource.Id.hide);
 
-			// Wire each button to a click listener
-			showButton.Click += delegate { SetVisibility (ViewStates.Visible); };
-			hideButton.Click += delegate { SetVisibility (ViewStates.Gone); };
+            //// Wire each button to a click listener
+            //showButton.Click += delegate { SetVisibility (ViewStates.Visible); };
+            //hideButton.Click += delegate { SetVisibility (ViewStates.Gone); };
 		}
 
-		void SetVisibility (ViewStates state)
-		{
-			mSwitchTexture.Visibility = state;
-			mMenuContainer.Visibility = state;
-		}
+        //void SetVisibility (ViewStates state)
+        //{
+        //    mSwitchTexture.Visibility = state;
+        //    mMenuContainer.Visibility = state;
+        //}
 	}
 }

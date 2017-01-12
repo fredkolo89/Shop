@@ -17,6 +17,7 @@ namespace Mono.Samples.TexturedCube {
 
 	class PaintingView : AndroidGameView
 	{
+	     float rotateX;
 		float prevx, prevy;
 		float xangle, yangle;
 		int [] textureIds;
@@ -38,7 +39,7 @@ namespace Mono.Samples.TexturedCube {
 
 		private void Initialize ()
 		{
-			textureIds = new int[6];
+			textureIds = new int[7];
 			context = Context;
 			xangle = 45;
 			yangle = 45;
@@ -129,7 +130,7 @@ namespace Mono.Samples.TexturedCube {
 
 			// create texture ids
 			GL.Enable (All.Texture2D);
-			GL.GenTextures (6, textureIds);
+			GL.GenTextures (7, textureIds);
 
 			LoadTexture (context, Resource.Drawable.photo1, textureIds [0]);
            LoadTexture(context, Resource.Drawable.photo2, textureIds[1]);
@@ -137,6 +138,8 @@ namespace Mono.Samples.TexturedCube {
             LoadTexture(context, Resource.Drawable.photo4, textureIds[3]);
             LoadTexture(context, Resource.Drawable.photo5, textureIds[4]);
             LoadTexture(context, Resource.Drawable.photo6, textureIds[5]);
+            LoadTexture(context, Resource.Drawable.pattern, textureIds[6]);
+
  
 
 
@@ -209,7 +212,7 @@ namespace Mono.Samples.TexturedCube {
 		{   Random rnd = new Random(DateTime.Now.Millisecond);
 			//cur_texture = (cur_texture + 1) % textureIds.Length;
         cur_texture = rnd.Next(0, textureIds.Length);
-          //  RenderCube ();
+          // RenderCube ();
 		}
 
 		void RenderCube ()
@@ -224,11 +227,21 @@ namespace Mono.Samples.TexturedCube {
 			GL.Rotate(-xangle, 1, 0, 0);
 			GL.Rotate(-yangle, 0, 1, 0);
 
-			
-			GL.EnableClientState(All.VertexArray);
-			GL.EnableClientState(All.TextureCoordArray);
+
+            GL.EnableClientState(All.VertexArray);
+            GL.EnableClientState(All.TextureCoordArray);
+            rotateX += xangle;
+            Console.WriteLine(rotateX);
+		    
+		
 			for (int i = 0; i < 6; i++) // draw each face
 			{
+
+                if (rotateX>160 && rotateX<180)
+                {
+                    cur_texture =  textureIds[6];
+                    rotateX = 0;
+                }
                 
                 GL.BindTexture(All.Texture2D, textureIds[i]);
 				float [] v = cubeVertexCoords [i];

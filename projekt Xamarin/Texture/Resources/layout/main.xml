@@ -29,7 +29,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"/>
 
-		<LinearLayout android:id="@+id/hidecontainer"
+		<!--<LinearLayout android:id="@+id/hidecontainer"
 			android:orientation="vertical"
 			android:visibility="gone"
 			android:background="@drawable/translucent"
@@ -43,7 +43,7 @@
 				android:layout_gravity="center"
 				android:visibility="gone"
 				android:text="@string/switch_texture"/>
-		</LinearLayout>
+		</LinearLayout>-->
 	</FrameLayout>
 	<LinearLayout
 		android:orientation="horizontal"
@@ -51,7 +51,12 @@
 		android:layout_height="wrap_content"
 		android:layout_gravity="center">
 
-		<Button android:id="@+id/show"
+    <Button android:id="@+id/switch_texture"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="@string/switch_texture"/>
+
+		<!--<Button android:id="@+id/show"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/show"/>
@@ -59,6 +64,6 @@
 		<Button android:id="@+id/hide"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/hide"/>
+			android:text="@string/hide"/>-->
 	</LinearLayout>
 </LinearLayout>
