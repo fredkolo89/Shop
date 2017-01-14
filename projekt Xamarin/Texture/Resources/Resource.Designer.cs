@@ -43,6 +43,13 @@ namespace Mono.Samples.TexturedCube
 		
 		public partial class Drawable
 		{
+            public static int[] TexturesResourcesInts = new int[]
+		    {
+		        photo1,photo3,photo4,photo5,photo6,
+                photo7,photo8,photo9,photo10,photo11,photo12,
+                photo13,photo14,photo15,photo16,photo17,photo18,
+                photo19,photo20,photo21,photo22,photo23,photo24,photo25
+		    };
 			
 			// aapt resource value: 0x7f020000
 			public const int app_texturedcube = 2130837504;
@@ -60,22 +67,76 @@ namespace Mono.Samples.TexturedCube
 			public const int photo1 = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int photo2 = 2130837509;
+			public const int photo10 = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int photo3 = 2130837510;
+			public const int photo11 = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int photo4 = 2130837511;
+			public const int photo12 = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int photo5 = 2130837512;
+			public const int photo13 = 2130837512;
 			
 			// aapt resource value: 0x7f020009
-			public const int photo6 = 2130837513;
+			public const int photo14 = 2130837513;
 			
 			// aapt resource value: 0x7f02000a
-			public const int translucent = 2130837514;
+			public const int photo15 = 2130837514;
+			
+			// aapt resource value: 0x7f02000b
+			public const int photo16 = 2130837515;
+			
+			// aapt resource value: 0x7f02000c
+			public const int photo17 = 2130837516;
+			
+			// aapt resource value: 0x7f02000d
+			public const int photo18 = 2130837517;
+			
+			// aapt resource value: 0x7f02000e
+			public const int photo19 = 2130837518;
+			
+			// aapt resource value: 0x7f02000f
+			public const int photo20 = 2130837519;
+			
+			// aapt resource value: 0x7f020010
+			public const int photo21 = 2130837520;
+			
+			// aapt resource value: 0x7f020011
+			public const int photo22 = 2130837521;
+			
+			// aapt resource value: 0x7f020012
+			public const int photo23 = 2130837522;
+			
+			// aapt resource value: 0x7f020013
+			public const int photo24 = 2130837523;
+			
+			// aapt resource value: 0x7f020014
+			public const int photo25 = 2130837524;
+			
+			// aapt resource value: 0x7f020015
+			public const int photo3 = 2130837525;
+			
+			// aapt resource value: 0x7f020016
+			public const int photo4 = 2130837526;
+			
+			// aapt resource value: 0x7f020017
+			public const int photo5 = 2130837527;
+			
+			// aapt resource value: 0x7f020018
+			public const int photo6 = 2130837528;
+			
+			// aapt resource value: 0x7f020019
+			public const int photo7 = 2130837529;
+			
+			// aapt resource value: 0x7f02001a
+			public const int photo8 = 2130837530;
+			
+			// aapt resource value: 0x7f02001b
+			public const int photo9 = 2130837531;
+			
+			// aapt resource value: 0x7f02001c
+			public const int translucent = 2130837532;
 			
 			static Drawable()
 			{

@@ -19,7 +19,8 @@ namespace Mono.Samples.TexturedCube
 
     class PaintingView : AndroidGameView
     {
-        float rotateX;
+
+        const int angleOfChange = 330;
         float prevx, prevy;
         float xangle, yangle;
         int[] textureIds;
@@ -41,10 +42,10 @@ namespace Mono.Samples.TexturedCube
 
         private void Initialize()
         {
-            textureIds = new int[7];
+            textureIds = new int[Resource.Drawable.TexturesResourcesInts.Length];
             context = Context;
-            xangle = 45;
-            yangle = 45;
+            xangle = 0;
+            yangle = 0;
 
             Resize += delegate
             {
@@ -142,19 +143,14 @@ namespace Mono.Samples.TexturedCube
 
             // create texture ids
             GL.Enable(All.Texture2D);
-            GL.GenTextures(7, textureIds);
+            GL.GenTextures(Resource.Drawable.TexturesResourcesInts.Length, textureIds);
 
-            LoadTexture(context, Resource.Drawable.photo1, textureIds[0]);
-            LoadTexture(context, Resource.Drawable.photo2, textureIds[1]);
-            LoadTexture(context, Resource.Drawable.photo3, textureIds[2]);
-            LoadTexture(context, Resource.Drawable.photo4, textureIds[3]);
-            LoadTexture(context, Resource.Drawable.photo5, textureIds[4]);
-            LoadTexture(context, Resource.Drawable.photo6, textureIds[5]);
-            LoadTexture(context, Resource.Drawable.pattern, textureIds[6]);
+            for(var i=0; i<Resource.Drawable.TexturesResourcesInts.Length;i++)
+            {
+                LoadTexture(context, Resource.Drawable.TexturesResourcesInts[i], textureIds[i]);
 
-
-
-
+            }
+     
             SetupCamera();
             RenderCube();
         }
@@ -208,13 +204,68 @@ namespace Mono.Samples.TexturedCube
                 float xdiff = (prevx - e_x);
                 float ydiff = (prevy - e_y);
                 xangle = xangle + ydiff;
-               // yangle = yangle + xdiff;
+                yangle = yangle + xdiff;
                 prevx = e_x;
                 prevy = e_y;
+                Console.WriteLine("x:  "+xangle+"  y:  "+yangle);
+                ChangingBackTexture(xangle,yangle);
+                
             }
             if (e.Action == MotionEventActions.Down || e.Action == MotionEventActions.Move)
                 RenderCube();
             return true;
+        }
+
+        private void ChangingBackTexture(float xangle, float yangle)
+        {
+            var tempX = System.Math.Abs(xangle) % angleOfChange;
+            var tempY = System.Math.Abs(yangle) % angleOfChange;
+
+            if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
+            {
+                textureIds[3] = RandomizeTexture();
+            }
+
+            tempX = System.Math.Abs(xangle) % angleOfChange;
+            tempY = System.Math.Abs((yangle - 90)) % angleOfChange;
+
+            if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
+            {
+                textureIds[4] = RandomizeTexture();
+            }
+
+            tempX = System.Math.Abs(xangle) % angleOfChange;
+            tempY = System.Math.Abs((yangle + 90)) % angleOfChange;
+
+            if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
+            {
+                textureIds[5] = RandomizeTexture();
+            }
+
+            tempX = System.Math.Abs(xangle) % angleOfChange;
+            tempY = System.Math.Abs((yangle + 180)) % angleOfChange;
+
+            if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
+            {
+                textureIds[2] = RandomizeTexture();
+            }
+
+            tempX = System.Math.Abs(xangle-90) % angleOfChange;
+            tempY = System.Math.Abs(yangle) % angleOfChange;
+
+            if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
+            {
+                textureIds[1] = RandomizeTexture();
+            }
+
+            tempX = System.Math.Abs(xangle + 90) % angleOfChange;
+            tempY = System.Math.Abs(yangle) % angleOfChange;
+
+            if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
+            {
+                textureIds[0] = RandomizeTexture();
+            }
+
         }
 
         protected override void OnUnload(EventArgs e)
@@ -232,6 +283,13 @@ namespace Mono.Samples.TexturedCube
             .ToArray();
             RenderCube();
         }
+        public int RandomizeTexture()
+        {
+            Random rnd = new Random(DateTime.Now.Millisecond);
+            return textureIds[rnd.Next(0, textureIds.Length)];
+
+        }
+
 
         void RenderCube()
         {
@@ -248,19 +306,14 @@ namespace Mono.Samples.TexturedCube
 
             GL.EnableClientState(All.VertexArray);
             GL.EnableClientState(All.TextureCoordArray);
-            rotateX += xangle;
-            Console.WriteLine(rotateX);
+           
+          
 
 
             for (int i = 0; i < 6; i++) // draw each face
             {
 
-                //if (rotateX>160 && rotateX<180)
-                //{
-                //    cur_texture =  textureIds[6];
-                //    rotateX = 0;
-                //}
-
+             
                 GL.BindTexture(All.Texture2D, textureIds[i]);
                 float[] v = cubeVertexCoords[i];
                 float[] t = cubeTextureCoords[i];
