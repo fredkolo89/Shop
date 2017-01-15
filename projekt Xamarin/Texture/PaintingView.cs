@@ -253,7 +253,7 @@ namespace Mono.Samples.TexturedCube
             tempX = System.Math.Abs(xangle-90) % angleOfChange;
             tempY = System.Math.Abs(yangle) % angleOfChange;
 
-            if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
+            if ((tempX > 0 && tempX < 20) && (tempY > 0 && tempY < 20))
             {
                 textureIds[1] = RandomizeTexture();
             }
@@ -261,7 +261,7 @@ namespace Mono.Samples.TexturedCube
             tempX = System.Math.Abs(xangle + 90) % angleOfChange;
             tempY = System.Math.Abs(yangle) % angleOfChange;
 
-            if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
+            if ((tempX > 0 && tempX < 20) && (tempY > 0 && tempY < 20))
             {
                 textureIds[0] = RandomizeTexture();
             }

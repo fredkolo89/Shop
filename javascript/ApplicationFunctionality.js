@@ -31,14 +31,13 @@ function Pizza(size){   /*  To jest definicja klasy  */
 	};
 
 	this.loadObject = function (nameOfObject, nameOfTexture,size ){
-		var loader = new THREE.JSONLoader();
-		 	
+		var loader = JSONLoader();		 	
 		 	/*nie m dostępu poza loaderem do zmiennych znajdujacych sie w loaderze, 
 		 	wiec trzeba wszystko, rotacje, skalowanie i dodanie do sceny zrobić w loaderze */
 		 loader.load(nameOfObject,function ( geometry ) {   	 
-	        var	texture = new THREE.ImageUtils.loadTexture(nameOfTexture);
-	       	var material = new THREE.MeshBasicMaterial({map: texture});
-	    	this.pizza = new THREE.Mesh( geometry, material);
+	        var	texture = loadTexture(nameOfTexture);
+	       	var material = loadMaterial(texture);
+	    	this.pizza = mesh( geometry, material);
 	    	this.pizza.scale.set(size,200, size);	   		
 	   		degreeX = (90 * Math.PI)/180;
 	  		degreeY = (0 * Math.PI)/180;
@@ -62,9 +61,10 @@ function Tomatoe(angle){
 
 
 	this.addTomatoe = function(){	
-		var texture = THREE.ImageUtils.loadTexture(this.nameOfTexture);
-		var	tomatoe = new THREE.Mesh( new THREE.CircleGeometry( this.radius, this.segments,0, this.angle ),
-			new THREE.MeshBasicMaterial({map: texture}) );
+		var texture = loadTexture(this.nameOfTexture);
+		var material = loadMaterial(texture);
+		var geometry = circle( this.radius, this.segments, this.angle);
+		var	tomatoe = mesh( geometry,material);
 		scene.add(tomatoe);
 		objects.push( tomatoe ); 
 	}

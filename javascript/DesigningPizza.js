@@ -2,8 +2,8 @@
 		 
 		var camera,container, pizzaObject ,controls, scene, renderer,sizePizza,sizeGriedient,pizza,
 			objects = [],
-		 	plane = new THREE.Plane(),
-			raycaster = new THREE.Raycaster(),
+		 	plane = createPlane(),
+			raycaster = createRaycaster(),
 		 	mouse = new THREE.Vector2(),
 			offset = new THREE.Vector3(),
 			intersection = new THREE.Vector3(),
