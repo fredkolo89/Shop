@@ -77,22 +77,6 @@ namespace Mono.Samples.TexturedCube
                 Log.Verbose("TexturedCube", "{0}", ex);
             }
 
-            // Fallback modes
-            // If the first attempt at initializing the surface with a default graphics
-            // mode fails, then the app can try different configurations. Devices will
-            // support different modes, and what is valid for one might not be valid for
-            // another. If all options fail, you can set all values to 0, which will
-            // ask for the first available configuration the device has without any
-            // filtering.
-            // After a successful call to base.CreateFrameBuffer(), the GraphicsMode
-            // object will have its values filled with the actual values that the
-            // device returned.
-
-
-            // This is a setting that asks for any available 16-bit color mode with no
-            // other filters. It passes 0 to the buffers parameter, which is an invalid
-            // setting in the default OpenTK implementation but is valid in some
-            // Android implementations, so the AndroidGraphicsMode object allows it.
             try
             {
                 Log.Verbose("TexturedCube", "Loading with custom Android settings (low mode)");
@@ -107,10 +91,6 @@ namespace Mono.Samples.TexturedCube
                 Log.Verbose("TexturedCube", "{0}", ex);
             }
 
-            // this is a setting that doesn't specify any color values. Certain devices
-            // return invalid graphics modes when any color level is requested, and in
-            // those cases, the only way to get a valid mode is to not specify anything,
-            // even requesting a default value of 0 would return an invalid mode.
             try
             {
                 Log.Verbose("TexturedCube", "Loading with no Android settings");
@@ -145,12 +125,10 @@ namespace Mono.Samples.TexturedCube
             GL.Enable(All.Texture2D);
             GL.GenTextures(Resource.Drawable.TexturesResourcesInts.Length, textureIds);
 
-            for(var i=0; i<Resource.Drawable.TexturesResourcesInts.Length;i++)
+            for (var i = 0; i < Resource.Drawable.TexturesResourcesInts.Length; i++)
             {
                 LoadTexture(context, Resource.Drawable.TexturesResourcesInts[i], textureIds[i]);
-
             }
-     
             SetupCamera();
             RenderCube();
         }
@@ -207,9 +185,8 @@ namespace Mono.Samples.TexturedCube
                 yangle = yangle + xdiff;
                 prevx = e_x;
                 prevy = e_y;
-                Console.WriteLine("x:  "+xangle+"  y:  "+yangle);
-                ChangingBackTexture(xangle,yangle);
-                
+                ChangingBackTexture(xangle, yangle);
+
             }
             if (e.Action == MotionEventActions.Down || e.Action == MotionEventActions.Move)
                 RenderCube();
@@ -218,8 +195,32 @@ namespace Mono.Samples.TexturedCube
 
         private void ChangingBackTexture(float xangle, float yangle)
         {
-            var tempX = System.Math.Abs(xangle) % angleOfChange;
-            var tempY = System.Math.Abs(yangle) % angleOfChange;
+            var  tempX = System.Math.Abs(xangle - 90) % angleOfChange;
+            var  tempY = System.Math.Abs(yangle) % angleOfChange;
+
+            if ((tempX > 0 && tempX < 20) && (tempY > 0 && tempY < 20))
+            {
+                textureIds[0] = RandomizeTexture();
+            }
+
+            tempX = System.Math.Abs(xangle + 90) % angleOfChange;
+            tempY = System.Math.Abs(yangle) % angleOfChange;
+
+            if ((tempX > 0 && tempX < 20) && (tempY > 0 && tempY < 20))
+            {
+                textureIds[1] = RandomizeTexture();
+            }
+
+            tempX = System.Math.Abs(xangle) % angleOfChange;
+            tempY = System.Math.Abs((yangle + 180)) % angleOfChange;
+
+            if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
+            {
+                textureIds[2] = RandomizeTexture();
+            }
+
+           tempX = System.Math.Abs(xangle) % angleOfChange;
+            tempY = System.Math.Abs(yangle) % angleOfChange;
 
             if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
             {
@@ -242,29 +243,11 @@ namespace Mono.Samples.TexturedCube
                 textureIds[5] = RandomizeTexture();
             }
 
-            tempX = System.Math.Abs(xangle) % angleOfChange;
-            tempY = System.Math.Abs((yangle + 180)) % angleOfChange;
 
-            if ((tempX > 0 && tempX < 60) && (tempY > 0 && tempY < 60))
-            {
-                textureIds[2] = RandomizeTexture();
-            }
 
-            tempX = System.Math.Abs(xangle-90) % angleOfChange;
-            tempY = System.Math.Abs(yangle) % angleOfChange;
+       
 
-            if ((tempX > 0 && tempX < 20) && (tempY > 0 && tempY < 20))
-            {
-                textureIds[1] = RandomizeTexture();
-            }
-
-            tempX = System.Math.Abs(xangle + 90) % angleOfChange;
-            tempY = System.Math.Abs(yangle) % angleOfChange;
-
-            if ((tempX > 0 && tempX < 20) && (tempY > 0 && tempY < 20))
-            {
-                textureIds[0] = RandomizeTexture();
-            }
+ 
 
         }
 
@@ -296,45 +279,22 @@ namespace Mono.Samples.TexturedCube
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.MatrixMode(All.Modelview);
             GL.LoadIdentity();
-
-            // draw cube
-
             GL.Translate(0, 0, -6);
             GL.Rotate(-xangle, 1, 0, 0);
             GL.Rotate(-yangle, 0, 1, 0);
-
-
             GL.EnableClientState(All.VertexArray);
             GL.EnableClientState(All.TextureCoordArray);
-           
-          
-
 
             for (int i = 0; i < 6; i++) // draw each face
             {
-
-             
                 GL.BindTexture(All.Texture2D, textureIds[i]);
                 float[] v = cubeVertexCoords[i];
                 float[] t = cubeTextureCoords[i];
-                // pin the data, so that GC doesn't move them, while used
-                // by native code
-                unsafe
-                {
-                    fixed (float* pv = v, pt = t)
-                    {
-                        GL.VertexPointer(3, All.Float, 0, new IntPtr(pv));
-                        GL.TexCoordPointer(2, All.Float, 0, new IntPtr(pt));
-                        GL.DrawArrays(All.TriangleFan, 0, 4);
-                        GL.Finish();
-                    }
-                }
+                GL.VertexPointer(3, All.Float, 0, v);
+                GL.TexCoordPointer(2, All.Float, 0, t);
+                GL.DrawArrays(All.TriangleFan, 0, 4);
+                GL.Finish();
             }
-
-
-
-
-
             GL.DisableClientState(All.VertexArray);
             GL.DisableClientState(All.TextureCoordArray);
 

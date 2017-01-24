@@ -21,7 +21,8 @@
 
 		var tomatoes = createTomatoeHandler('tomatoe',sizeGriedient.whole);
 		var halfTomatoe = createTomatoeHandler('halfTomatoe',sizeGriedient.half);
-
+		var onion = createOnionHandler('onion',sizeGriedient.whole);
+		var halfOnion = createOnionHandler('halfOnion',sizeGriedient.half);
 			 	
 			function init() {				
 				 

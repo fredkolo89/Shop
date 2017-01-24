@@ -1,4 +1,4 @@
-function Pizza(size){   /*  To jest definicja klasy  */
+function Pizza(size){
 
 	this.size=size;
 	this.nameOfObject = 'pizza3d.json';
@@ -32,8 +32,6 @@ function Pizza(size){   /*  To jest definicja klasy  */
 
 	this.loadObject = function (nameOfObject, nameOfTexture,size ){
 		var loader = JSONLoader();		 	
-		 	/*nie m dostępu poza loaderem do zmiennych znajdujacych sie w loaderze, 
-		 	wiec trzeba wszystko, rotacje, skalowanie i dodanie do sceny zrobić w loaderze */
 		 loader.load(nameOfObject,function ( geometry ) {   	 
 	        var	texture = loadTexture(nameOfTexture);
 	       	var material = loadMaterial(texture);
@@ -70,6 +68,24 @@ function Tomatoe(angle){
 	}
 }
 
+function Onion(angle){
+
+	this.segments = 32;
+	this.radius = 50;
+	this.nameOfTexture = 'onionTexture.png';
+	this.angle= angle;
+
+
+	this.addOnion = function(){	
+		var texture = loadTexture(this.nameOfTexture);
+		var material = loadMaterial(texture);
+		var geometry = circle( this.radius, this.segments, this.angle);
+		var	onion = mesh( geometry,material);
+		scene.add(onion);
+		objects.push( onion ); 
+	}
+}
+
 
 function createPizzaHandler(nameElement, size){	
 	var handler = document.getElementById(nameElement);
@@ -96,6 +112,14 @@ function createTomatoeHandler(nameElement, angle){
 	return handler;
 }  
 
+function createOnionHandler(nameElement, angle){	
+	var handler = document.getElementById(nameElement);
+	handler.addEventListener("click",function() {
+	 	onion = new Onion(angle);
+	 	onion.addOnion();	
+		}, false);
+	return handler;
+}  
 
 
 

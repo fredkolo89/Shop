@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - draggable cubes</title>
+		<title>Pizzeria Informatyk</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
 
 		.dropbtn {
-		    background-color: none;
-		    color: white;
-		    padding: 16px;
-		    font-size: 16px;
-		    border: none;
 		    cursor: pointer;
-		    border-style: solid;
-    		border-width:  1px 2px 1px 2px;
-    		border-color: green;
 		}
 
 		.dropdown {
@@ -27,15 +19,12 @@
 		
 			align-content: center;
 		    display: none;
-			/*position: absolute;*/
 		    background-color: none;
-		    min-width: 100px;
 		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 		}
 
 		.dropdown-content a {
 		    color: black;
-		    padding: 12px 16px;
 		    text-decoration: none;
 		    display: block;
 		}
@@ -49,8 +38,6 @@
 		.dropdown:hover .dropbtn {
 		    background-color: none;
 		}
-
- 
 
 
 			body {
@@ -67,38 +54,31 @@
 			margin-right: auto;
 		}
 		
-		#logo
-		{
-			height: 100px;
-			background-color: blue;
-			color: white;
-			text-align: center;
-			padding: 5px;
-			font-size: 20px;
-		}
 		
 		#leftSight
 		{
 			float: left;
-			background-color: yellow;
-			width: 102px;
-			min-height: 620px;
+			background-color: #c1c1c1;
+			width: 123px;
+			min-height: 300px;
 		}
 		
+		#rightSight
+		{
+			float: right;
+			background-color: #c1c1c1;
+			width: 123px;
+			min-height: 300px;
+		}
+				
 		#widokCenter
 		{
 			float: left;
-			width: 300;
+			width: 400;
 			height: 600;
 			background-color: black;
 		}
-		#rightSite
-		{
-			float: right;
-			background-color: yellow;
-			width: 104px;
-			min-height: 620px;
-		}
+
 		#footer
 		{
 			position: absolute;
@@ -106,65 +86,96 @@
 			bottom: 0;
 			left: 0;				
 			background-color: red;			
-			height: 60px;
+			height: 110px;
 		}
 		
-		</style>
+	</style>
 	</head>
 	<body>
 					
 	<div id="widokCenter">
+		
 		<canvas id='canvas' style=" position: absolute; left: 0; top: 0; z-index: -10; background-color: #000000; "></canvas>
 	</div>
 
 	<div id="container">
+		
 		<div id="logo">
-			<h1>Witamy w naszej restauracji</h1>
+			<img src="grafiki/header.png" id="header" alt="Smiley face" style="margin: auto; display: block; "><br/>
+
 		</div>
-	
+		
+		<div id="footer">
+			<img src="grafiki/footer.png" id="footer" alt="Smiley face" style="margin: auto; display: block; "><br/>		
+		</div>
+
 		<div id="leftSight">
 		
 			<div class="dropdown">
-			  <button class="dropbtn"> <img src="pizza.png" height=60 width="60" style="margin: auto; display: block; "></button>
+			  <button class="dropbtn"> <img src="grafiki/pizza.png" height="100" width="100" style="margin: auto; display: block; "></button>
 			  <div class="dropdown-content">
-			    <img src="pizza.png" id="small" alt="Smiley face" height="42" width="42" style="margin: auto; display: block; "><br/>
-			    <img src="pizza.png" id="medium" alt="Smiley face" height=60 width="60" style="margin: auto; display: block; "><br/>
-			    <img src="pizza.png" id="big" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; ">
+			    <img src="grafiki/pizza.png" id="small" alt="Smiley face" height="50" width="50" style="margin: auto; display: block; "><br/>
+			    <img src="grafiki/pizza.png" id="medium" alt="Smiley face" height="60" width="60" style="margin: auto; display: block; "><br/>
+			    <img src="grafiki/pizza.png" id="big" alt="Smiley face" height="70" width="70" style="margin: auto; display: block; ">
+			  </div>
+			</div>
+		</div>
+
+
+
+	
+		<div id="rightSight">
+		
+			<div class="dropdown">
+			  <button class="dropbtn"> <img src="grafiki/pizza.png" height="100" width="100" style="margin: auto; display: block; "></button>
+			  <div class="dropdown-content">
+			    <img src="grafiki/pizza.png" id="small" alt="Smiley face" height="50" width="50" style="margin: auto; display: block; "><br/>
+			    <img src="grafiki/pizza.png" id="medium" alt="Smiley face" height="60" width="60" style="margin: auto; display: block; "><br/>
+			    <img src="grafiki/pizza.png" id="big" alt="Smiley face" height="70" width="70" style="margin: auto; display: block; ">
 			  </div>
 			</div>
 			
 			<div class="dropdown">
-			  <button class="dropbtn"> <img src="tomatoe.png" height=60 width="60" style="margin: auto; display: block; "></button>
+			  <button class="dropbtn"> <img src="grafiki/tomatoe.png" height="100" width="100" style="margin: auto; display: block; "></button>
 			  <div class="dropdown-content">
-			    <img src="tomatoesTexture.png"  id="tomatoe" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
-				<img  src="halfTomatoetexture.png" id="halfTomatoe" alt="Smiley face"  height="40" width="80" style="padding-top: 20px; padding-bottom: 20px; margin: auto; display: block; "><br/>
+			    <img src="grafiki/tomatoesTexture.png"  id="tomatoe" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
+				<img  src="grafiki/halfTomatoetexture.png" id="halfTomatoe" alt="Smiley face"  height="40" width="80" style="padding-top: 20px; padding-bottom: 20px; margin: auto; display: block; "><br/>
 			  </div>
 			</div>	
 
 			<div class="dropdown">
-			  <button class="dropbtn"> <img src="onion.png" height=60 width="60" style="margin: auto; display: block; "></button>
-			 <!--  <div class="dropdown-content">
-			    <img src="tomatoesTexture.png"  id="tomatoes" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
-				<img  src="halfTomatoe.png" id="halfTomatoe" alt="Smiley face"  height="40" width="80" style="padding-top: 20px; padding-bottom: 20px; margin: auto; display: block; "><br/>
-			  </div> -->
+			  <button class="dropbtn"> <img src="grafiki/onion.png" height="100" width="100" style="margin: auto; display: block; "></button>
+			  <div class="dropdown-content">
+			    <img src="grafiki/onionTexture.png"  id="onion" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
 			</div>	
-			<div class="dropdown" >
-			  <button class="dropbtn" id="end" style="display: none" > <text  style="color: red;">Zakończ i obejrzyj pizze</text> </button>
-			</div> 			
-		</div>	
-		
+
+			<div class="dropdown-content">
+			    <img src="grafiki/onionTexture.png"  id="halfOnion" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
+			</div>		
+			</div>	
+			
+			<div class="dropdown">
+			  <button class="dropbtn"> <img src="grafiki/cheese.png" height="100" width="100" style="margin: auto; display: block; "></button>
+			  <div class="dropdown-content">
+			    <img src="grafiki/salamiTexture.png"  id="cheese" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
+			</div>	 			
+			</div>
+
+			<div class="dropdown">
+			  <button class="dropbtn"> <img src="grafiki/salami.png" height="100" width="100" style="margin: auto; display: block; "></button>
+			  <div class="dropdown-content">
+			    <img src="grafiki/salamiTexture.png"  id="salami" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
+			</div>	 			
+			</div>				
+			
 
 		
-		<div id="rightSite">
-					
+		<div id="rightSight">
+			  <div class="dropdown" >
+			  <button class="dropbtn" id="end" style="display: none" > <img src="grafiki/gotowe.png" height="100" width="100" style="margin: auto; display: block; "> </button>
+			</div> 			
 		</div>
-		
-		<div id="footer">
-					
-		</div>
-		
 	
-		
 
 	 </div>
 	
