@@ -86,6 +86,42 @@ function Onion(angle){
 	}
 }
 
+function Salami(angle){
+
+	this.segments = 32;
+	this.radius = 50;
+	this.nameOfTexture = 'salamiTexture.png';
+	this.angle= angle;
+
+
+	this.addSalami = function(){	
+		var texture = loadTexture(this.nameOfTexture);
+		var material = loadMaterial(texture);
+		var geometry = circle( this.radius, this.segments, this.angle);
+		var	salami = mesh( geometry,material);
+		scene.add(salami);
+		objects.push( salami ); 
+	}
+}
+
+function Cheese(angle){
+
+	this.segments = 32;
+	this.radius = 50;
+	this.nameOfTexture = 'cheeseTexture.png';
+	this.angle= angle;
+
+
+	this.addCheese = function(){	
+		var texture = loadTexture(this.nameOfTexture);
+		var material = loadMaterial(texture);
+		var geometry = circle( this.radius, this.segments, this.angle);
+		var	cheese = mesh( geometry,material);
+		scene.add(cheese);
+		objects.push( cheese ); 
+	}
+}
+
 
 function createPizzaHandler(nameElement, size){	
 	var handler = document.getElementById(nameElement);
@@ -120,6 +156,25 @@ function createOnionHandler(nameElement, angle){
 		}, false);
 	return handler;
 }  
+
+function createSalamiHandler(nameElement, angle){	
+	var handler = document.getElementById(nameElement);
+	handler.addEventListener("click",function() {
+	 	salami = new Salami(angle);
+	 	salami.addSalami();	
+		}, false);
+	return handler;
+}  
+
+function createCheeseHandler(nameElement, angle){	
+	var handler = document.getElementById(nameElement);
+	handler.addEventListener("click",function() {
+	 	cheese = new Cheese (angle);
+	 	cheese.addCheese();	
+		}, false);
+	return handler;
+}  
+
 
 
 

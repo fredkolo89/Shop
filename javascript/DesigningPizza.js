@@ -23,6 +23,9 @@
 		var halfTomatoe = createTomatoeHandler('halfTomatoe',sizeGriedient.half);
 		var onion = createOnionHandler('onion',sizeGriedient.whole);
 		var halfOnion = createOnionHandler('halfOnion',sizeGriedient.half);
+		var salami = createSalamiHandler('salami',sizeGriedient.whole);
+		var halfSalami = createSalamiHandler('halfSalami',sizeGriedient.half);
+		var cheese = createCheeseHandler('cheese',sizeGriedient.whole);
 			 	
 			function init() {				
 				 
