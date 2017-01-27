@@ -50,7 +50,7 @@ namespace Mono.Samples.TexturedCube
                 photo13,photo14,photo15,photo16,photo17,photo18,
                 photo19,photo20,photo21,photo22,photo23,photo24,photo25
 		    };
-			
+
 			// aapt resource value: 0x7f020000
 			public const int app_texturedcube = 2130837504;
 			

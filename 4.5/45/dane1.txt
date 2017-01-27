@@ -1,0 +1,14 @@
+slonecznie,	 niska, 	wysokie,	 nie, 	false;
+slonecznie, 	 wysoka, 	wysokie, 	 tak, 	false;
+pochmurnie, 	 niska, 	wysokie, 	 nie, 	true;
+slonecznie, 	 wysoka, 	wysokie, 	 nie, 	true;
+deszczowo, 	 niska, 	umiarkowane, 	 nie, 	true;
+deszczowo, 	 niska, 	umiarkowane, 	 tak, 	false;
+pochmurnie, 	 niska, 	umiarkowane, 	 tak, 	true;
+slonecznie, 	 umiarkowana, 	wysokie, 	 nie, 	false;
+slonecznie, 	 niska, 	umiarkowane, 	 nie, 	true;
+slonecznie, 	 umiarkowana, 	umiarkowane, 	 nie, 	true;
+slonecznie, 	 umiarkowana, 	umiarkowane, 	 nie, 	true;
+pochmurnie,  	 umiarkowana, 	wysokie, 	 tak, 	true;
+pochmurnie, 	 wysoka, 	umiarkowane, 	 nie, 	true;
+slonecznie, 	 umiarkowana, 	wysokie, 	 tak, 	false;
