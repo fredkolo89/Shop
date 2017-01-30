@@ -63,12 +63,19 @@ function Tomatoe(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	tomatoe = mesh( geometry,material);
-		tomatoe.position.y = 0+positionNewElement.bottom*1.5 ;
-		console.log(positionNewElement.top, positionNewElement.right, positionNewElement.bottom, positionNewElement.left);
-		tomatoe.position.x =-window.innerWidth + positionNewElement.right*2.5;
-		tomatoe.rotateX = 30;
+		tomatoe.position.y = window.screen.availHeight - window.screen.availHeight /2;
+		tomatoe.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
+
+		//console.log(window.innerWidth,window.innerHeight);
+		//tomatoe.rotation.x= Math.PI / 2;
+		var quaternion = new THREE.Quaternion();
+		quaternion.setFromAxisAngle( new THREE.Vector3( 0, 1, 0 ), Math.PI / 2 );		
+	    //tomatoe.rotation.setEulerFromQuaternion( quaternion );
+
+	  
+
 		scene.add(tomatoe);
-		objects.push( tomatoe ); 
+		objects.push(tomatoe); 
 	}
 }
 
@@ -87,6 +94,7 @@ function Onion(angle){
 		var	onion = mesh( geometry,material);
 		onion.position.x = -700;
 		onion.position.y = 400;
+
 		scene.add(onion);
 		objects.push( onion ); 
 	}
