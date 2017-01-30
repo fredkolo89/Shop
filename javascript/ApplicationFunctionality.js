@@ -1,15 +1,15 @@
 function Pizza(size){
 
 	this.size=size;
-	this.nameOfObject = 'pizza3d.json';
-	this.nameOfTexture = 'pizza3d.jpg';
+	this.nameOfObject = 'grafiki/pizza3d.json';
+	this.nameOfTexture = 'grafiki/pizza3d.jpg';
 	this.nameElement = 'end';
 	this.nameHidingElement = 'container';
     this.pizza;
 
  
 	this.addPizza = function(){
-	    
+
 		sizePizza.presentSize = size;
 		this.loadObject(this.nameOfObject,this.nameOfTexture,this.size);	 
 		this.showEndingElement(this.nameElement,this.nameHidingElement);
@@ -54,15 +54,19 @@ function Tomatoe(angle){
 
 	this.segments = 32;
 	this.radius = 50;
-	this.nameOfTexture = 'tomatoesTexture.png';
+	this.nameOfTexture = 'grafiki/tomatoesTexture.png';
 	this.angle= angle;
-
+	
 
 	this.addTomatoe = function(){	
 		var texture = loadTexture(this.nameOfTexture);
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	tomatoe = mesh( geometry,material);
+		tomatoe.position.y = 0+positionNewElement.bottom*1.5 ;
+		console.log(positionNewElement.top, positionNewElement.right, positionNewElement.bottom, positionNewElement.left);
+		tomatoe.position.x =-window.innerWidth + positionNewElement.right*2.5;
+		tomatoe.rotateX = 30;
 		scene.add(tomatoe);
 		objects.push( tomatoe ); 
 	}
@@ -71,8 +75,8 @@ function Tomatoe(angle){
 function Onion(angle){
 
 	this.segments = 32;
-	this.radius = 50;
-	this.nameOfTexture = 'onionTexture.png';
+	this.radius = 40;
+	this.nameOfTexture = 'grafiki/onionTexture.png';
 	this.angle= angle;
 
 
@@ -81,6 +85,8 @@ function Onion(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	onion = mesh( geometry,material);
+		onion.position.x = -700;
+		onion.position.y = 400;
 		scene.add(onion);
 		objects.push( onion ); 
 	}
@@ -90,7 +96,7 @@ function Salami(angle){
 
 	this.segments = 32;
 	this.radius = 50;
-	this.nameOfTexture = 'salamiTexture.png';
+	this.nameOfTexture = 'grafiki/salamiTexture.png';
 	this.angle= angle;
 
 
@@ -99,6 +105,8 @@ function Salami(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	salami = mesh( geometry,material);
+		salami.position.x = -700;
+		salami.position.y = 400;
 		scene.add(salami);
 		objects.push( salami ); 
 	}
@@ -107,8 +115,8 @@ function Salami(angle){
 function Cheese(angle){
 
 	this.segments = 32;
-	this.radius = 50;
-	this.nameOfTexture = 'cheeseTexture.png';
+	this.radius = 70;
+	this.nameOfTexture = 'grafiki/cheeseTexture.png';
 	this.angle= angle;
 
 
@@ -117,11 +125,92 @@ function Cheese(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	cheese = mesh( geometry,material);
+		cheese.position.x = -700;
+		cheese.position.y = 400;
 		scene.add(cheese);
 		objects.push( cheese ); 
 	}
 }
 
+function Ham(angle){
+
+	this.segments = 32;
+	this.radius = 100;
+	this.nameOfTexture = 'grafiki/hamTexture.png';
+	this.angle= angle;
+
+
+	this.addHam = function(){	
+		var texture = loadTexture(this.nameOfTexture);
+		var material = loadMaterial(texture);
+		var geometry = circle( this.radius, this.segments, this.angle);
+		var	ham = mesh( geometry,material);
+		ham.position.x = -700;
+		ham.position.y = 400;
+		scene.add(ham);
+		objects.push( ham ); 
+	}
+}
+
+function Mozzarella(angle){
+
+	this.segments = 32;
+	this.radius = 60;
+	this.nameOfTexture = 'grafiki/mozzarellaTexture.png';
+	this.angle= angle;
+
+
+	this.addMozzarella = function(){	
+		var texture = loadTexture(this.nameOfTexture);
+		var material = loadMaterial(texture);
+		var geometry = circle( this.radius, this.segments, this.angle);
+		var	mozzarella = mesh( geometry,material);
+		mozzarella.position.x = -700;
+		mozzarella.position.y = 400;
+		scene.add(mozzarella);
+		objects.push( mozzarella ); 
+	}
+}
+
+function Cucumber(angle){
+
+	this.segments = 32;
+	this.radius = 30;
+	this.nameOfTexture = 'grafiki/cucumberTexture.png';
+	this.angle= angle;
+
+
+	this.addCucumber = function(){	
+		var texture = loadTexture(this.nameOfTexture);
+		var material = loadMaterial(texture);
+		var geometry = circle( this.radius, this.segments, this.angle);
+		var	cucumber = mesh( geometry,material);
+		cucumber.position.x = -700;
+		cucumber.position.y = 400;
+		scene.add(cucumber);
+		objects.push( cucumber ); 
+	}
+}
+
+function Corn(angle){
+
+	this.segments = 32;
+	this.radius = 10;
+	this.nameOfTexture = 'grafiki/cornTexture.png';
+	this.angle= angle;
+
+
+	this.addCorn = function(){	
+		var texture = loadTexture(this.nameOfTexture);
+		var material = loadMaterial(texture);
+		var geometry = circle( this.radius, this.segments, this.angle);
+		var	corn = mesh( geometry,material);
+		corn.position.x = -700;
+		corn.position.y = 400;
+		scene.add(corn);
+		objects.push( corn ); 
+	}
+}
 
 function createPizzaHandler(nameElement, size){	
 	var handler = document.getElementById(nameElement);
@@ -175,7 +264,41 @@ function createCheeseHandler(nameElement, angle){
 	return handler;
 }  
 
+function createHamHandler(nameElement, angle){	
+	var handler = document.getElementById(nameElement);
+	handler.addEventListener("click",function() {
+	 	ham = new Ham (angle);
+	 	ham.addHam();	
+		}, false);
+	return handler;
+}  
 
+function createMozzarellaHandler(nameElement, angle){	
+	var handler = document.getElementById(nameElement);
+	handler.addEventListener("click",function() {
+	 	mozzarella = new Mozzarella (angle);
+	 	mozzarella.addMozzarella();	
+		}, false);
+	return handler;
+}  
+
+function createCucumberHandler(nameElement, angle){	
+	var handler = document.getElementById(nameElement);
+	handler.addEventListener("click",function() {
+	 	cucumber = new Cucumber (angle);
+	 	cucumber.addCucumber();	
+		}, false);
+	return handler;
+}  
+
+function createCornHandler(nameElement, angle){	
+	var handler = document.getElementById(nameElement);
+	handler.addEventListener("click",function() {
+	 	corn = new Corn (angle);
+	 	corn.addCorn();	
+		}, false);
+	return handler;
+}  
 
 
 

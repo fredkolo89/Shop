@@ -43,14 +43,7 @@ namespace Mono.Samples.TexturedCube
 		
 		public partial class Drawable
 		{
-            public static int[] TexturesResourcesInts = new int[]
-		    {
-		        photo1,photo3,photo4,photo5,photo6,
-                photo7,photo8,photo9,photo10,photo11,photo12,
-                photo13,photo14,photo15,photo16,photo17,photo18,
-                photo19,photo20,photo21,photo22,photo23,photo24,photo25
-		    };
-
+			
 			// aapt resource value: 0x7f020000
 			public const int app_texturedcube = 2130837504;
 			
