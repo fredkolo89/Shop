@@ -135,7 +135,10 @@
 
 				var intersects = raycaster.intersectObjects( objects );
 
-				if ( intersects.length > 0 ) {
+
+				switch ( event.button ) {
+				    case 0: 
+				    if ( intersects.length > 0 ) {
 
 					SELECTED = intersects[ 0 ].object;
  
@@ -145,6 +148,23 @@
 					}
 					container.style.cursor = 'move';
 				}
+				        break;
+				    case 1: // middle
+				        break;
+				    case 2: 
+				       if ( intersects.length > 0 ) {
+
+					SELECTED = intersects[ 0 ].object; 
+					scene.remove( intersects[ 0 ].object );
+					objects.splice(intersects[ 0 ].object, 1);
+
+				 console.log("1");
+				}
+				    console.log("2");
+				        break;
+				}
+
+				
 			}
 
 			function onDocumentMouseUp( event ) {

@@ -65,15 +65,6 @@ function Tomatoe(angle){
 		var	tomatoe = mesh( geometry,material);
 		tomatoe.position.y = window.screen.availHeight - window.screen.availHeight /2;
 		tomatoe.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
-
-		//console.log(window.innerWidth,window.innerHeight);
-		//tomatoe.rotation.x= Math.PI / 2;
-		var quaternion = new THREE.Quaternion();
-		quaternion.setFromAxisAngle( new THREE.Vector3( 0, 1, 0 ), Math.PI / 2 );		
-	    //tomatoe.rotation.setEulerFromQuaternion( quaternion );
-
-	  
-
 		scene.add(tomatoe);
 		objects.push(tomatoe); 
 	}
