@@ -27,13 +27,7 @@ namespace Mono.Samples.TexturedCube
         int cur_texture;
         int width, height;
         Context context;
-        public static int[] TexturesResourcesInts = new int[]
-		    {
-		        Resource.Drawable.photo3,Resource.Drawable.photo4,Resource.Drawable.photo5,Resource.Drawable.photo6,
-                Resource.Drawable.photo7,Resource.Drawable.photo8,Resource.Drawable.photo9,Resource.Drawable.photo10,Resource.Drawable.photo11,Resource.Drawable.photo12,
-                Resource.Drawable.photo13,Resource.Drawable.photo14,Resource.Drawable.photo15,Resource.Drawable.photo16,Resource.Drawable.photo17,Resource.Drawable.photo18,
-                Resource.Drawable.photo19,Resource.Drawable.photo20,Resource.Drawable.photo21,Resource.Drawable.photo22,Resource.Drawable.photo23,Resource.Drawable.photo24,Resource.Drawable.photo25
-		    };
+        public static int[] TexturesResourcesInts;
         public PaintingView(Context context, IAttributeSet attrs) :
             base(context, attrs)
         {
@@ -52,7 +46,16 @@ namespace Mono.Samples.TexturedCube
             context = Context;
             xangle = 0;
             yangle = 0;
-
+            TexturesResourcesInts = new int[]
+		    {
+		        Resource.Drawable.photo3,Resource.Drawable.photo4,Resource.Drawable.photo5,Resource.Drawable.photo6,
+                Resource.Drawable.photo7,Resource.Drawable.photo8,Resource.Drawable.photo9,Resource.Drawable.photo10,
+                Resource.Drawable.photo11,Resource.Drawable.photo12,Resource.Drawable.photo13,Resource.Drawable.photo14,
+                Resource.Drawable.photo15,Resource.Drawable.photo16,Resource.Drawable.photo17,Resource.Drawable.photo18,
+                Resource.Drawable.photo19,Resource.Drawable.photo20,Resource.Drawable.photo21,Resource.Drawable.photo22,
+                Resource.Drawable.photo23,Resource.Drawable.photo24,Resource.Drawable.photo25
+		    };
+            textureIds = new int[TexturesResourcesInts.Length];
             Resize += delegate
             {
                 height = Height;
@@ -248,14 +251,7 @@ namespace Mono.Samples.TexturedCube
             {
                 textureIds[5] = RandomizeTexture();
             }
-
-
-
-       
-
- 
-
-        }
+    }
 
         protected override void OnUnload(EventArgs e)
         {

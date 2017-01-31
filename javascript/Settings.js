@@ -135,6 +135,18 @@
 
 				var intersects = raycaster.intersectObjects( objects );
 
+					if(event.button ==1 && event.button==0)
+					{
+						 if ( intersects.length > 0 ) {
+
+						SELECTED = intersects[ 0 ].object; 
+						 intersects[ 0 ].object.scale.set(2,2,2);
+						
+	 					console.log("1");
+
+	 					}
+
+					}
 
 				switch ( event.button ) {
 				    case 0: 
@@ -150,6 +162,15 @@
 				}
 				        break;
 				    case 1: // middle
+
+				 //     if ( intersects.length > 0 ) {
+
+					// SELECTED = intersects[ 0 ].object; 
+					//  intersects[ 0 ].object.scale.set(2,2,2);
+					
+ 				// 	console.log("1");
+
+ 				//	}
 				        break;
 				    case 2: 
 				       if ( intersects.length > 0 ) {
@@ -158,9 +179,9 @@
 					scene.remove( intersects[ 0 ].object );
 					objects.splice(intersects[ 0 ].object, 1);
 
-				 console.log("1");
+				
 				}
-				    console.log("2");
+				     
 				        break;
 				}
 

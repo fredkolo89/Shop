@@ -11,7 +11,6 @@
 
 
 	    var positionNewElement = document.getElementById('pizza').getBoundingClientRect();
-		//console.log(rect.top, rect.right, rect.bottom, rect.left);
 
 	 	init();
 		animate();

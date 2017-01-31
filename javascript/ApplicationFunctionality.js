@@ -13,8 +13,13 @@ function Pizza(size){
 		sizePizza.presentSize = size;
 		this.loadObject(this.nameOfObject,this.nameOfTexture,this.size);	 
 		this.showEndingElement(this.nameElement,this.nameHidingElement);
-	
-	};
+			var myObj, myJSON, text, obj;
+
+		//Storing data:
+		myObj = { "name":"John", "age":31, "city":"New York" };
+		myJSON = JSON.stringify(myObj);
+		localStorage.setItem("testJSON", myJSON);
+	}
 
 	this.showEndingElement= function (nameElement, nameHidingElement){
 		var end = this.createEndingElement(nameElement,nameHidingElement);
@@ -124,7 +129,7 @@ function Cheese(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	cheese = mesh( geometry,material);
-		cheese.position.y = window.screen.availHeight - window.screen.availHeight /2;
+		cheese.position.y = window.screen.availHeight - window.screen.availHeight/2;
 		cheese.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
 		scene.add(cheese);
 		objects.push( cheese ); 
