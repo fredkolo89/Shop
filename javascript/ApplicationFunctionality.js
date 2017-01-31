@@ -83,8 +83,8 @@ function Onion(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	onion = mesh( geometry,material);
-		onion.position.x = -700;
-		onion.position.y = 400;
+		onion.position.y = window.screen.availHeight - window.screen.availHeight /2;
+		onion.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
 
 		scene.add(onion);
 		objects.push( onion ); 
@@ -104,8 +104,8 @@ function Salami(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	salami = mesh( geometry,material);
-		salami.position.x = -700;
-		salami.position.y = 400;
+		salami.position.y = window.screen.availHeight - window.screen.availHeight /2;
+		salami.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
 		scene.add(salami);
 		objects.push( salami ); 
 	}
@@ -124,8 +124,8 @@ function Cheese(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	cheese = mesh( geometry,material);
-		cheese.position.x = -700;
-		cheese.position.y = 400;
+		cheese.position.y = window.screen.availHeight - window.screen.availHeight /2;
+		cheese.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
 		scene.add(cheese);
 		objects.push( cheese ); 
 	}
@@ -144,8 +144,8 @@ function Ham(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	ham = mesh( geometry,material);
-		ham.position.x = -700;
-		ham.position.y = 400;
+		ham.position.y = window.screen.availHeight - window.screen.availHeight /2;
+		ham.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
 		scene.add(ham);
 		objects.push( ham ); 
 	}
@@ -164,8 +164,8 @@ function Mozzarella(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	mozzarella = mesh( geometry,material);
-		mozzarella.position.x = -700;
-		mozzarella.position.y = 400;
+		mozzarella.position.y = window.screen.availHeight - window.screen.availHeight /2;
+		mozzarella.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
 		scene.add(mozzarella);
 		objects.push( mozzarella ); 
 	}
@@ -184,8 +184,8 @@ function Cucumber(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	cucumber = mesh( geometry,material);
-		cucumber.position.x = -700;
-		cucumber.position.y = 400;
+		cucumber.position.y = window.screen.availHeight - window.screen.availHeight /2;
+		cucumber.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
 		scene.add(cucumber);
 		objects.push( cucumber ); 
 	}
@@ -204,8 +204,8 @@ function Corn(angle){
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	corn = mesh( geometry,material);
-		corn.position.x = -700;
-		corn.position.y = 400;
+		corn.position.y = window.screen.availHeight - window.screen.availHeight /2;
+		corn.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
 		scene.add(corn);
 		objects.push( corn ); 
 	}
