@@ -17,7 +17,8 @@
 
 		.dropdown-content {
 		
-			align-content: center;
+			
+
 		    display: none;
 		    background-color: none;
 		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -89,6 +90,7 @@
 			background-color: red;			
 			height: 110px;
 		}
+ 
 			.show {
 		    z-index:1000;
 		    position: absolute;
@@ -108,6 +110,7 @@
 			.show li{ list-style: none; }
 			.show a { border: 0 !important; text-decoration: none; }
 			.show a:hover { text-decoration: underline !important; }
+ 
 	</style>
 	</head>
 	<body>
@@ -115,6 +118,7 @@
 	<div id="widokCenter">
 		
 		<canvas id='canvas' style=" position: absolute; left: 0; top: 0; z-index: -10; background-color: #000000; "></canvas>
+				
 	</div>
 
 	<div id="container">
@@ -123,6 +127,7 @@
 			<img src="grafiki/header.png" id="header" alt="Smiley face" style="margin: auto; display: block; "><br/>
 
 		</div>
+ 
 
 		        <!-- initially hidden right-click menu -->
         <div class="hide" id="rmenu">
@@ -137,12 +142,16 @@
 
             </ul>
         </div>
+ 
 		
-		<div id="footer">
-			<img src="grafiki/footer.png" id="footer" alt="Smiley face" style="margin: auto; display: block; "><br/>		
+		<div id="footer">						
+			<img src="grafiki/footer.png" id="footer" alt="Smiley face" style="margin: auto; display: block; ">	
+			
 		</div>
 	
-		<div id="leftSight">
+			
+	<div id="leftSight">
+	
 		
 			<div class="dropdown">
 			  <button class="dropbtn"> <img src="grafiki/pizza.png" id="pizza" height="80" width="80" style="margin: auto; display: block; "></button>
@@ -151,6 +160,7 @@
 			    <img src="grafiki/pizza.png" id="medium" alt="Smiley face" height="60" width="60" style="margin: auto; display: block; "><br/>
 			    <img src="grafiki/pizza.png" id="big" alt="Smiley face" height="70" width="70" style="margin: auto; display: block; ">
 			  </div>
+		
 			</div>
 			
 			<div class="dropdown">
@@ -173,7 +183,7 @@
 			  <button class="dropbtn"> <img src="grafiki/cheese.png" height="80" width="80" style="margin: auto; display: block; "></button>
 			  <div class="dropdown-content">
 			    <img src="grafiki/cheeseTexture.png"  id="cheese" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
-			</div>	 			
+			</div>	 				
 			</div>
 
 			<div class="dropdown">
@@ -182,12 +192,11 @@
 			    <img src="grafiki/salamiTexture.png"  id="salami" alt="Smiley face" height="80" width="80" style="margin: auto; display: block; "><br/>
 				<img src="grafiki/halfSalamiTexture.png"  id="halfSalami" alt="Smiley face" height="40" width="80" style="margin: auto; display: block; ">
 			</div>	 			
-			</div>		
+			</div>				 
+
 			</div>
 
-				<button id="save">Save</button>
-				<input type="file" id="fileInput">
-
+	
 
 		<div id="rightSight">
 		
@@ -225,9 +234,17 @@
 			 <div class="dropdown" >
 			  <button class="dropbtn" id="end" style="display: none" > <img src="grafiki/gotowe.png" height="80" width="80" style="margin: auto; display: block; "> </button>
 			</div> 
+			
+	</div>
 	
+	<div style="position: relative; height: 530px; ">
+		<div style="position: absolute; height: 10px;  bottom: 0; right: 0;  left: 0; ">
+			  <center>
+						<button id="save">Save</button>
+						<input type="file" id="fileInput">
+			  </center>
+	</div>
 
-	 </div>
 	 
 	 <script src="three.js-dev/src/math/Quaternion.js"></script>
 	<script src="three.js-dev/src/math/Euler.js"></script>
