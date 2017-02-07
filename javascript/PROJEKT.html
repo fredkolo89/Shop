@@ -131,16 +131,13 @@
 
 		        <!-- initially hidden right-click menu -->
         <div class="hide" id="rmenu">
-            <ul>
-                <li>
-				Ustaw rozmiar: <input type="range" id="myRange" value="1" min="0.4" max="3" step="0.2">
+            
+				Rozmiar: <input type="range" id="myRange" value="1" min="0.4" max="3" step="0.2">
  					<button onclick="updateSize()">Ustaw</button>
-		       </li>
-
-                <li>
-                 </li>
-
-            </ul>
+		       <br/>
+			    Kąt: <input type="range" id="myRangeAngle" value="0" min="0" max="7" step="0.2">
+ 					<button onclick="updateAngle()">Ustaw</button>
+           
         </div>
  
 		

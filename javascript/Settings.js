@@ -35,9 +35,20 @@
 		    var updatedSize = document.getElementById("myRange").value;
 		    console.log(updatedSize);
 		    intersects[ 0 ].object.scale.set(updatedSize,updatedSize,updatedSize);
+ 			//intersects[ 0 ].object.rotation.x += .41;
 		    document.getElementById("myRange").value=1.0;
    			 document.getElementById("rmenu").className = "hide";  
  		}
+ 		function updateAngle(){
+		    var updatedAngle = document.getElementById("myRangeAngle").value;
+ 		    intersects[ 0 ].object.rotation.z = updatedAngle;
+			//intersects[ 0 ].object.rotation.x += .41;
+		   // document.getElementById("myRangeAngle").value=0;
+   			 document.getElementById("rmenu").className = "hide";  
+ 		}
+
+
+
  		 function download(strData, strFileName, strMimeType) {
 	   		 var D = document,
 	        A = arguments,
