@@ -49,8 +49,8 @@ namespace _45
             DataTable dt = helpers.getDataTable(number);
             Attribute[] attributes = helpers.GetListOfAttribute(dt).ToArray();
             DecisionTree decisionTree = new DecisionTree();
-            TreeNode root = decisionTree.mountTree(dt, "rezultat", attributes);  
-            root.printNode(root,ref treeItem);    
+            TreeNode root = decisionTree.mountTree(dt, "rezultat", attributes);
+            root.printNode(root, ref treeItem);    
         }
 
 

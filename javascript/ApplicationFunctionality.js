@@ -1,5 +1,7 @@
-function Pizza(size){
 
+
+function Pizza(size){
+	this.nameGredient = 'pizza';
 	this.size=size;
 	this.nameOfObject = 'grafiki/pizza3d.json';
 	this.nameOfTexture = 'grafiki/pizza3d.jpg';
@@ -7,23 +9,27 @@ function Pizza(size){
 	this.nameHidingElement = 'container';
     this.pizza;
 
+	Pizza.prototype.getName = function() { 
+   var funcNameRegex = /function (.{1,})\(/;
+   var results = (funcNameRegex).exec((this).constructor.toString());
+   return (results && results.length > 1) ? results[1] : "";
+};
  
 	this.addPizza = function(){
-
-		sizePizza.presentSize = size;
+ 		sizePizza.presentSize = size;
 		this.loadObject(this.nameOfObject,this.nameOfTexture,this.size);	 
 		this.showEndingElement(this.nameElement,this.nameHidingElement);
 			var myObj, myJSON, text, obj;
-
-		//Storing data:
-		myObj = { "name":"John", "age":31, "city":"New York" };
-		myJSON = JSON.stringify(myObj);
-		localStorage.setItem("testJSON", myJSON);
+ 
 	}
 
 	this.showEndingElement= function (nameElement, nameHidingElement){
 		var end = this.createEndingElement(nameElement,nameHidingElement);
 	    document.getElementById(nameElement).style.display = 'block';
+
+
+
+
 	};
 
 	this.createEndingElement= function (nameElement, nameHidingElement){
@@ -56,163 +62,197 @@ function Pizza(size){
 }
 
 function Tomatoe(angle){
-
+	this.nameGredient = 'tomatoe';
 	this.segments = 32;
 	this.radius = 50;
 	this.nameOfTexture = 'grafiki/tomatoesTexture.png';
 	this.angle= angle;
 	
 
-	this.addTomatoe = function(){	
+	this.addTomatoe = function(y,x){	
 		var texture = loadTexture(this.nameOfTexture);
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	tomatoe = mesh( geometry,material);
-		tomatoe.position.y = window.screen.availHeight - window.screen.availHeight /2;
-		tomatoe.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
+		tomatoe.position.y = y;
+		tomatoe.position.x =x;
 		scene.add(tomatoe);
 		objects.push(tomatoe); 
+		objectsName.push(this.nameGredient);
+		// saveText+=this.nameGredient+';'+tomatoe.position.y+';'+tomatoe.position.x+';\t';
 	}
+
+	Tomatoe.prototype.name = function() {
+    return this.nameOfTexture;
+};
 }
 
 function Onion(angle){
-
+	this.nameGredient = 'onion';
 	this.segments = 32;
 	this.radius = 40;
 	this.nameOfTexture = 'grafiki/onionTexture.png';
 	this.angle= angle;
 
 
-	this.addOnion = function(){	
+	this.addOnion = function(y,x){	
 		var texture = loadTexture(this.nameOfTexture);
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	onion = mesh( geometry,material);
-		onion.position.y = window.screen.availHeight - window.screen.availHeight /2;
-		onion.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
+		onion.position.y = y;
+		onion.position.x =x;
 
 		scene.add(onion);
 		objects.push( onion ); 
+		objectsName.push(this.nameGredient);
+
+		// saveText+=this.nameGredient+';'+onion.position.y+';'+onion.position.x+';\t';
+
 	}
 }
 
 function Salami(angle){
-
+	this.nameGredient = 'salami';
 	this.segments = 32;
 	this.radius = 50;
 	this.nameOfTexture = 'grafiki/salamiTexture.png';
 	this.angle= angle;
 
 
-	this.addSalami = function(){	
+	this.addSalami = function(y,x){	
 		var texture = loadTexture(this.nameOfTexture);
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	salami = mesh( geometry,material);
-		salami.position.y = window.screen.availHeight - window.screen.availHeight /2;
-		salami.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
+		salami.position.y = y;
+		salami.position.x =x ;
 		scene.add(salami);
 		objects.push( salami ); 
+		objectsName.push(this.nameGredient);
+
+		// saveText+=this.nameGredient+';'+salami.position.y+';'+salami.position.x+';\t';
+
 	}
 }
 
 function Cheese(angle){
-
+	this.nameGredient = 'cheese';
 	this.segments = 32;
 	this.radius = 70;
 	this.nameOfTexture = 'grafiki/cheeseTexture.png';
 	this.angle= angle;
 
 
-	this.addCheese = function(){	
+	this.addCheese = function(y,x){	
 		var texture = loadTexture(this.nameOfTexture);
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	cheese = mesh( geometry,material);
-		cheese.position.y = window.screen.availHeight - window.screen.availHeight/2;
-		cheese.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
+		cheese.position.y = y;
+		cheese.position.x =x ;
 		scene.add(cheese);
 		objects.push( cheese ); 
+		objectsName.push(this.nameGredient);
+
+				// saveText+=this.nameGredient+';'+cheese.position.y+';'+cheese.position.x+';\t';
+
 	}
 }
 
 function Ham(angle){
-
+	this.nameGredient = 'ham';
 	this.segments = 32;
 	this.radius = 100;
 	this.nameOfTexture = 'grafiki/hamTexture.png';
 	this.angle= angle;
 
 
-	this.addHam = function(){	
+	this.addHam = function(y,x){	
 		var texture = loadTexture(this.nameOfTexture);
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	ham = mesh( geometry,material);
-		ham.position.y = window.screen.availHeight - window.screen.availHeight /2;
-		ham.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
+		ham.position.y =y;
+		ham.position.x =x ;
 		scene.add(ham);
 		objects.push( ham ); 
+		objectsName.push(this.nameGredient);
+
+				// saveText+=this.nameGredient+';'+ham.position.y+';'+ham.position.x+';\t';
+
 	}
 }
 
 function Mozzarella(angle){
-
+	this.nameGredient = 'mozzarella';
 	this.segments = 32;
 	this.radius = 60;
 	this.nameOfTexture = 'grafiki/mozzarellaTexture.png';
 	this.angle= angle;
 
 
-	this.addMozzarella = function(){	
+	this.addMozzarella = function(y,x){	
 		var texture = loadTexture(this.nameOfTexture);
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	mozzarella = mesh( geometry,material);
-		mozzarella.position.y = window.screen.availHeight - window.screen.availHeight /2;
-		mozzarella.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
+		mozzarella.position.y = y;
+		mozzarella.position.x =x;
 		scene.add(mozzarella);
-		objects.push( mozzarella ); 
+		objects.push( mozzarella );
+		objectsName.push(this.nameGredient);
+
+				// saveText+=this.nameGredient+';'+mozzarella.position.y+';'+mozzarella.position.x+';\t';
+ 
 	}
 }
 
 function Cucumber(angle){
-
+	this.nameGredient = 'cucumber';
 	this.segments = 32;
 	this.radius = 30;
 	this.nameOfTexture = 'grafiki/cucumberTexture.png';
 	this.angle= angle;
 
 
-	this.addCucumber = function(){	
+	this.addCucumber = function(y,x){	
 		var texture = loadTexture(this.nameOfTexture);
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	cucumber = mesh( geometry,material);
-		cucumber.position.y = window.screen.availHeight - window.screen.availHeight /2;
-		cucumber.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
+		cucumber.position.y = y;
+		cucumber.position.x =x ;
 		scene.add(cucumber);
 		objects.push( cucumber ); 
+		objectsName.push(this.nameGredient);
+
+				// saveText+=this.nameGredient+';'+cucumber.position.y+';'+cucumber.position.x+';\t';
+
 	}
 }
 
 function Corn(angle){
-
+	this.nameGredient = 'corn';
 	this.segments = 32;
 	this.radius = 10;
 	this.nameOfTexture = 'grafiki/cornTexture.png';
 	this.angle= angle;
 
 
-	this.addCorn = function(){	
+	this.addCorn = function(y,x){	
 		var texture = loadTexture(this.nameOfTexture);
 		var material = loadMaterial(texture);
 		var geometry = circle( this.radius, this.segments, this.angle);
 		var	corn = mesh( geometry,material);
-		corn.position.y = window.screen.availHeight - window.screen.availHeight /2;
-		corn.position.x =-window.screen.availWidth + window.screen.availWidth/4 ;
+		corn.position.y = y;
+		corn.position.x =x ;
 		scene.add(corn);
 		objects.push( corn ); 
+		objectsName.push(this.nameGredient);
+
+				// saveText+=this.nameGredient+';'+corn.position.y+';'+corn.position.x+';\t';
+
 	}
 }
 
@@ -224,9 +264,11 @@ function createPizzaHandler(nameElement, size){
 		{		
 			scene.remove(pizza);
 			delete pizza;	
+	
 		} 
 	 	pizza = new Pizza(size);	 	
 	 	pizza.addPizza();
+	 	presentPizzaSize=size;
 
 		}, false);
 	return handler;
@@ -236,7 +278,7 @@ function createTomatoeHandler(nameElement, angle){
 	var handler = document.getElementById(nameElement);
 	handler.addEventListener("click",function() {
 	 	tomatoe = new Tomatoe(angle);
-	 	tomatoe.addTomatoe();	
+	 	tomatoe.addTomatoe(startPositionGredient.y,startPositionGredient.x);	
 		}, false);
 	return handler;
 }  
@@ -245,7 +287,7 @@ function createOnionHandler(nameElement, angle){
 	var handler = document.getElementById(nameElement);
 	handler.addEventListener("click",function() {
 	 	onion = new Onion(angle);
-	 	onion.addOnion();	
+	 	onion.addOnion(startPositionGredient.y,startPositionGredient.x);	
 		}, false);
 	return handler;
 }  
@@ -254,7 +296,7 @@ function createSalamiHandler(nameElement, angle){
 	var handler = document.getElementById(nameElement);
 	handler.addEventListener("click",function() {
 	 	salami = new Salami(angle);
-	 	salami.addSalami();	
+	 	salami.addSalami(startPositionGredient.y,startPositionGredient.x);	
 		}, false);
 	return handler;
 }  
@@ -262,8 +304,8 @@ function createSalamiHandler(nameElement, angle){
 function createCheeseHandler(nameElement, angle){	
 	var handler = document.getElementById(nameElement);
 	handler.addEventListener("click",function() {
-	 	cheese = new Cheese (angle);
-	 	cheese.addCheese();	
+	 	cheese = new Cheese(angle);
+	 	cheese.addCheese(startPositionGredient.y,startPositionGredient.x);	
 		}, false);
 	return handler;
 }  
@@ -272,7 +314,7 @@ function createHamHandler(nameElement, angle){
 	var handler = document.getElementById(nameElement);
 	handler.addEventListener("click",function() {
 	 	ham = new Ham (angle);
-	 	ham.addHam();	
+	 	ham.addHam(startPositionGredient.y,startPositionGredient.x);	
 		}, false);
 	return handler;
 }  
@@ -281,7 +323,7 @@ function createMozzarellaHandler(nameElement, angle){
 	var handler = document.getElementById(nameElement);
 	handler.addEventListener("click",function() {
 	 	mozzarella = new Mozzarella (angle);
-	 	mozzarella.addMozzarella();	
+	 	mozzarella.addMozzarella(startPositionGredient.y,startPositionGredient.x);	
 		}, false);
 	return handler;
 }  
@@ -290,7 +332,7 @@ function createCucumberHandler(nameElement, angle){
 	var handler = document.getElementById(nameElement);
 	handler.addEventListener("click",function() {
 	 	cucumber = new Cucumber (angle);
-	 	cucumber.addCucumber();	
+	 	cucumber.addCucumber(startPositionGredient.y,startPositionGredient.x);	
 		}, false);
 	return handler;
 }  
@@ -299,7 +341,7 @@ function createCornHandler(nameElement, angle){
 	var handler = document.getElementById(nameElement);
 	handler.addEventListener("click",function() {
 	 	corn = new Corn (angle);
-	 	corn.addCorn();	
+	 	corn.addCorn(startPositionGredient.y,startPositionGredient.x);	
 		}, false);
 	return handler;
 }  

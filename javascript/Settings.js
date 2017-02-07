@@ -1,6 +1,7 @@
 		function setBasicProperties(){
 			setPizzaSize();
 			setGriedientSize();
+			setStartPositionGredient();
 			setCamera();
 			setControls();
 			setCanvas();
@@ -9,7 +10,9 @@
 			setRendering();
 
 		}
-
+		function setStartPositionGredient(){
+			startPositionGredient={y:window.screen.availHeight - window.screen.availHeight /2,x:-window.screen.availWidth + window.screen.availWidth/4}
+		}
 		function setPizzaSize(){
 			 sizePizza= { small:200,medium:300,big:400, presentSize:0}
 		}
@@ -192,8 +195,7 @@
 
 				event.preventDefault();
 
-				console.log(SELECTED.position.x);
-				 
+ 				 
 	    		SELECTED.position.x=limitDrag(SELECTED.position.x,sizePizza.presentSize);
 	    		SELECTED.position.y=limitDrag(SELECTED.position.y,sizePizza.presentSize);
 

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
-using static _45.MainWindow;
+
 
 namespace _45.Tree
 {

@@ -12,7 +12,7 @@ namespace _45.Db
 {
     public class Initializer : DropCreateDatabaseAlways<DataBase>
     {
-        
+
         protected override void Seed(DataBase context)
         {
             SeedData(context);
@@ -143,7 +143,7 @@ namespace _45.Db
             };
             data2.ForEach(r => context.Data2.AddOrUpdate(r));
 
-         
+
             List<Data3> data3 = new List<Data3>()
             {
                 new Data3() { bezrobocie = "male",wielkosc_rodziny = "mala",wielkosc_ubostwa = "duze",stan_zdrowotny = "zly",rezultat = true},
@@ -210,7 +210,23 @@ namespace _45.Db
                 new Data4() { stan_ogolny = "sredni", choroba_na_oddziale = "swinka", samopoczucie = "dobre", goraczka = "nie", rezultat = true },
                 new Data4() { stan_ogolny = "sredni", choroba_na_oddziale = "ospa", samopoczucie = "srednie", goraczka = "nie", rezultat = true },
                 new Data4() { stan_ogolny = "zly", choroba_na_oddziale = "srednia", samopoczucie = "male", goraczka = "tak", rezultat = false },
-           };
+                          new Data4() { stan_ogolny = "zly", choroba_na_oddziale = "rozyczka", samopoczucie = "dobre", goraczka = "nie", rezultat = false },
+                new Data4() { stan_ogolny = "zly", choroba_na_oddziale = "ospa", samopoczucie = "zle", goraczka = "tak", rezultat = false },
+                new Data4() { stan_ogolny = "dobry", choroba_na_oddziale = "rozyczka", samopoczucie = "dobre", goraczka = "tak", rezultat = false },
+                new Data4() { stan_ogolny = "dobry", choroba_na_oddziale = "ospa", samopoczucie = "dobre", goraczka = "nie", rezultat = true },
+                new Data4() { stan_ogolny = "dobry", choroba_na_oddziale = "rozyczka", samopoczucie = "srednie", goraczka = "nie", rezultat = true },
+                new Data4() { stan_ogolny = "dobry", choroba_na_oddziale = "rozyczka", samopoczucie = "srednie", goraczka = "tak", rezultat = false },
+                new Data4() { stan_ogolny = "sredni", choroba_na_oddziale = "rozyczka", samopoczucie = "dobre", goraczka = "nie", rezultat = true },
+                new Data4() { stan_ogolny = "zly", choroba_na_oddziale = "swinka", samopoczucie = "dobre", goraczka = "tak", rezultat = false },
+                new Data4() { stan_ogolny = "zly", choroba_na_oddziale = "rozyczka", samopoczucie = "srednie", goraczka = "tak", rezultat = false },
+                new Data4() { stan_ogolny = "zly", choroba_na_oddziale = "swinka", samopoczucie = "srednie", goraczka = "nie", rezultat = false },
+                new Data4() { stan_ogolny = "zly", choroba_na_oddziale = "swinka", samopoczucie = "srednie", goraczka = "nie", rezultat = false },
+                new Data4() { stan_ogolny = "sredni", choroba_na_oddziale = "swinka", samopoczucie = "dobre", goraczka = "nie", rezultat = true },
+                new Data4() { stan_ogolny = "sredni", choroba_na_oddziale = "ospa", samopoczucie = "srednie", goraczka = "nie", rezultat = true },
+                new Data4() { stan_ogolny = "zly", choroba_na_oddziale = "srednia", samopoczucie = "male", goraczka = "tak", rezultat = false },
+            
+            
+            };
             data4.ForEach(r => context.Data4.AddOrUpdate(r));
             context.SaveChanges();
         }
