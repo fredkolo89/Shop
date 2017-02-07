@@ -9,26 +9,17 @@ function Pizza(size){
 	this.nameHidingElement = 'container';
     this.pizza;
 
-	Pizza.prototype.getName = function() { 
-   var funcNameRegex = /function (.{1,})\(/;
-   var results = (funcNameRegex).exec((this).constructor.toString());
-   return (results && results.length > 1) ? results[1] : "";
-};
  
 	this.addPizza = function(){
  		sizePizza.presentSize = size;
 		this.loadObject(this.nameOfObject,this.nameOfTexture,this.size);	 
 		this.showEndingElement(this.nameElement,this.nameHidingElement);
-			var myObj, myJSON, text, obj;
- 
+			var myObj, myJSON, text, obj; 
 	}
 
 	this.showEndingElement= function (nameElement, nameHidingElement){
 		var end = this.createEndingElement(nameElement,nameHidingElement);
 	    document.getElementById(nameElement).style.display = 'block';
-
-
-
 
 	};
 
@@ -79,12 +70,11 @@ function Tomatoe(angle){
 		scene.add(tomatoe);
 		objects.push(tomatoe); 
 		objectsName.push(this.nameGredient);
+		objectsAngle.push(this.angle);
+
 		// saveText+=this.nameGredient+';'+tomatoe.position.y+';'+tomatoe.position.x+';\t';
 	}
 
-	Tomatoe.prototype.name = function() {
-    return this.nameOfTexture;
-};
 }
 
 function Onion(angle){
@@ -106,7 +96,7 @@ function Onion(angle){
 		scene.add(onion);
 		objects.push( onion ); 
 		objectsName.push(this.nameGredient);
-
+		objectsAngle.push(this.angle);
 		// saveText+=this.nameGredient+';'+onion.position.y+';'+onion.position.x+';\t';
 
 	}
@@ -130,7 +120,7 @@ function Salami(angle){
 		scene.add(salami);
 		objects.push( salami ); 
 		objectsName.push(this.nameGredient);
-
+		objectsAngle.push(this.angle);
 		// saveText+=this.nameGredient+';'+salami.position.y+';'+salami.position.x+';\t';
 
 	}
@@ -154,7 +144,7 @@ function Cheese(angle){
 		scene.add(cheese);
 		objects.push( cheese ); 
 		objectsName.push(this.nameGredient);
-
+		objectsAngle.push(this.angle);
 				// saveText+=this.nameGredient+';'+cheese.position.y+';'+cheese.position.x+';\t';
 
 	}
@@ -178,7 +168,7 @@ function Ham(angle){
 		scene.add(ham);
 		objects.push( ham ); 
 		objectsName.push(this.nameGredient);
-
+		objectsAngle.push(this.angle);
 				// saveText+=this.nameGredient+';'+ham.position.y+';'+ham.position.x+';\t';
 
 	}
@@ -202,7 +192,7 @@ function Mozzarella(angle){
 		scene.add(mozzarella);
 		objects.push( mozzarella );
 		objectsName.push(this.nameGredient);
-
+		objectsAngle.push(this.angle);
 				// saveText+=this.nameGredient+';'+mozzarella.position.y+';'+mozzarella.position.x+';\t';
  
 	}
@@ -226,7 +216,7 @@ function Cucumber(angle){
 		scene.add(cucumber);
 		objects.push( cucumber ); 
 		objectsName.push(this.nameGredient);
-
+		objectsAngle.push(this.angle);
 				// saveText+=this.nameGredient+';'+cucumber.position.y+';'+cucumber.position.x+';\t';
 
 	}
@@ -250,7 +240,7 @@ function Corn(angle){
 		scene.add(corn);
 		objects.push( corn ); 
 		objectsName.push(this.nameGredient);
-
+		objectsAngle.push(this.angle);
 				// saveText+=this.nameGredient+';'+corn.position.y+';'+corn.position.x+';\t';
 
 	}
@@ -264,7 +254,7 @@ function createPizzaHandler(nameElement, size){
 		{		
 			scene.remove(pizza);
 			delete pizza;	
-	
+
 		} 
 	 	pizza = new Pizza(size);	 	
 	 	pizza.addPizza();

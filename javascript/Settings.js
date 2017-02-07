@@ -20,6 +20,143 @@
 			 sizeGriedient= { half:Math.PI, whole:Math.PI*2 }
 		}
 
+		function createSaveHandler(nameElement){
+			 document.getElementById(nameElement).addEventListener("click",function() {					
+			saveText='pizza'+';'+presentPizzaSize+'\t';
+			for(var i=0; i<objects.length;i++){					
+				saveText+=objectsName[i]+';'+objects[i].position.y+';'+objects[i].position.x+';'+objectsAngle[i]+'\t';
+			}
+ 					 				 
+ 			download(saveText, 'pizza.txt', 'text/plain');
+ 		 	},	false);
+		}
+	
+	    function updateSize() {
+		    var updatedSize = document.getElementById("myRange").value;
+		    console.log(updatedSize);
+		    intersects[ 0 ].object.scale.set(updatedSize,updatedSize,updatedSize);
+		    document.getElementById("myRange").value=1.0;
+   			 document.getElementById("rmenu").className = "hide";  
+ 		}
+ 		 function download(strData, strFileName, strMimeType) {
+	   		 var D = document,
+	        A = arguments,
+	        a = D.createElement("a"),
+	        d = A[0],
+	        n = A[1],
+	        t = A[2] || "text/plain";
+
+    //build download link:
+		    a.href = "data:" + strMimeType + "charset=utf-8," + escape(strData);
+
+
+		    if (window.MSBlobBuilder) { // IE10
+		        var bb = new MSBlobBuilder();
+		        bb.append(strData);
+		        return navigator.msSaveBlob(bb, strFileName);
+		    } /* end if(window.MSBlobBuilder) */
+
+
+
+		    if ('download' in a) { //FF20, CH19
+		        a.setAttribute("download", n);
+		        a.innerHTML = "downloading...";
+		        D.body.appendChild(a);
+		        setTimeout(function() {
+		            var e = D.createEvent("MouseEvents");
+		            e.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		            a.dispatchEvent(e);
+		            D.body.removeChild(a);
+		        }, 66);
+		        return true;
+		    }; /* end if('download' in a) */
+
+
+
+		    //do iframe dataURL download: (older W3)
+		    var f = D.createElement("iframe");
+		    D.body.appendChild(f);
+		    f.src = "data:" + (A[2] ? A[2] : "application/octet-stream") + (window.btoa ? ";base64" : "") + "," + (window.btoa ? window.btoa : escape)(strData);
+		    setTimeout(function() {
+		        D.body.removeChild(f);
+		    }, 333);
+		    return true;
+		}
+		  function getObjectClass(obj){
+		   if (typeof obj != "object" || obj === null) return false;
+		   else return /(\w+)\(/.exec(obj.constructor.toString())[1];
+		}
+
+
+
+		window.onload = function() {
+        var fileInput = document.getElementById('fileInput');
+        fileInput.addEventListener('change', function(e) {
+            var file = fileInput.files[0];
+            var textType = /text.*/;
+            var loadText;
+            if (file.type.match(textType)) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+ 				loadText= reader.result;
+ 				var lines = loadText.split('\t');
+ 				console.log(lines);
+   				for(var line = 0; line < lines.length; line++){
+   				 	var words = lines[line].split(';');
+   				     console.log(words);
+   				 		switch(words[0]){
+   				 			case 'pizza':
+   				 			if(pizza)
+							{		
+								scene.remove(pizza);
+								delete pizza;	
+						
+							} 
+						 	pizza = new Pizza(parseInt(words[1]));	 	
+						 	pizza.addPizza();
+						 	presentPizzaSize=parseInt(words[1]);
+   				 			break;
+   				 			case 'tomatoe':
+   				 			tomatoe = new Tomatoe(words[3]);
+	 						tomatoe.addTomatoe(words[1],words[2]);
+   				 			break;
+							case 'onion': 
+							onion = new Onion(words[3]);
+	 						onion.addOnion(words[1],words[2]);   				 			
+   				 			break;
+   				 			case 'salami':
+   				 			salami = new Salami(words[3]);
+	 						salami.addSalami(words[1],words[2]);   				 			
+   				 			break;
+   				 			case 'cheese':
+   				 			cheese = new Cheese(words[3]);
+	 						cheese.addCheese(words[1],words[2]);   				 			
+   				 			break;
+   				 			case 'ham':
+   				 			ham = new Ham(words[3]);
+	 						ham.addHam(words[1],words[2]);	   				 			
+   				 			break;
+   				 			case 'mozzarella':
+   				 			mozzarella= new Mozzarella(words[3]);
+	 						mozzarella.addMozzarella(words[1],words[2]);	   				 			
+   				 			break;
+   				 			case 'cucumber':
+   				 			cucumber = new Cucumber(words[3]);
+	 						cucumber.addCucumber(words[1],words[2]);   				 			
+   				 			break;
+   				 			case 'corn':
+   				 			corn= new Corn(words[3]);
+	 						corn.addCorn(words[1],words[2]);   				 			
+   				 			break;
+   				 		}   				 		 
+
+				}
+            }   
+                reader.readAsText(file);    
+            } 
+        });
+		}
+
 		function setRendering(){
 
 			renderer = createRenderer();
@@ -138,19 +275,7 @@
 
 				  intersects = raycaster.intersectObjects( objects );
 
-					if(event.button ==1 && event.button==0)
-					{
-						 if ( intersects.length > 0 ) {
-
-						SELECTED = intersects[ 0 ].object; 
-						 intersects[ 0 ].object.scale.set(2,2,2);
-						
-	 					console.log("1");
-
-	 					}
-
-					}
-
+					 
 				switch ( event.button ) {
 				    case 0: 
 				    if ( intersects.length > 0 ) {
@@ -162,22 +287,15 @@
 	    				 offset.copy( intersection ).sub( SELECTED.position ); 			 		 
 					}
 					container.style.cursor = 'move';
-				}
+					}
 				        break;
 				    case 1: // middle
 
 				     if ( intersects.length > 0 ) {
-
-
-
-			 document.getElementById("rmenu").className = "show";  
-            document.getElementById("rmenu").style.top =   event.clientY + 'px';
-            document.getElementById("rmenu").style.left =  event.clientX   + 'px';
-
-
- 					}
- 
- 										
+					 	document.getElementById("rmenu").className = "show";  
+           				 document.getElementById("rmenu").style.top =   event.clientY + 'px';
+          			 	 document.getElementById("rmenu").style.left =  event.clientX   + 'px';		
+ 					}										
 
 				        break;
 				    case 2: 
@@ -185,15 +303,10 @@
 
 					SELECTED = intersects[ 0 ].object; 
 					scene.remove( intersects[ 0 ].object );
-					objects.splice(intersects[ 0 ].object, 1);
-
-				
-				}
-				     
+					objects.splice(intersects[ 0 ].object, 1);				
+				}				     
 				        break;
-				}
-
-				
+				}				
 			}
 
 			function onDocumentMouseUp( event ) {
