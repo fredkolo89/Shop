@@ -129,14 +129,14 @@
 				}
 
 			}
-
+				var intersects ;
 			function onDocumentMouseDown( event ) {
 
 				event.preventDefault();
 
 				raycaster.setFromCamera( mouse, camera );
 
-				var intersects = raycaster.intersectObjects( objects );
+				  intersects = raycaster.intersectObjects( objects );
 
 					if(event.button ==1 && event.button==0)
 					{
@@ -166,14 +166,19 @@
 				        break;
 				    case 1: // middle
 
-				 //     if ( intersects.length > 0 ) {
+				     if ( intersects.length > 0 ) {
 
-					// SELECTED = intersects[ 0 ].object; 
-					//  intersects[ 0 ].object.scale.set(2,2,2);
-					
- 				// 	console.log("1");
 
- 				//	}
+
+			 document.getElementById("rmenu").className = "show";  
+            document.getElementById("rmenu").style.top =   event.clientY + 'px';
+            document.getElementById("rmenu").style.left =  event.clientX   + 'px';
+
+
+ 					}
+ 
+ 										
+
 				        break;
 				    case 2: 
 				       if ( intersects.length > 0 ) {

@@ -46,7 +46,16 @@
 		var halfCucumber = createCucumberHandler('halfCucumber',sizeGriedient.half);
 		
 		var corn = createCornHandler('corn',sizeGriedient.whole);
- 
+        
+
+        var updatedSize=1;
+		 function updateSize() {
+		    updatedSize = document.getElementById("myRange").value;
+		    console.log(updatedSize);
+		    intersects[ 0 ].object.scale.set(updatedSize,updatedSize,updatedSize);
+   			 document.getElementById("rmenu").className = "hide";  
+
+ 		}
 
 		var save =  document.getElementById('save').addEventListener("click",function() {	
 					
